@@ -1,0 +1,510 @@
+INSERT INTO personne VALUES (DEFAULT,'Cruise','Tom','01/02/1997'); --0
+INSERT INTO personne VALUES (DEFAULT,'Camelin','Nathalie','12/02/1807'); --1
+INSERT INTO personne VALUES (DEFAULT,'Prouteau','Thibault','19/11/1983'); --2
+INSERT INTO personne VALUES (DEFAULT,'Tahn','Thony','06/09/1985');
+INSERT INTO personne VALUES (DEFAULT,'Tan','Tony','04/12/2001');
+INSERT INTO personne VALUES (DEFAULT,'Vassenet','Maël','20/06/2001'); --5
+INSERT INTO personne VALUES (DEFAULT,'Rocher','Pierre','28/09/1998');
+INSERT INTO personne VALUES (DEFAULT,'Pennachi','Cyprien','16/11/2001');
+INSERT INTO personne VALUES (DEFAULT,'Robespierre','Bastille','12/03/1989');
+INSERT INTO personne VALUES (DEFAULT,'Russel','Georges','12/05/2016');
+INSERT INTO personne VALUES (DEFAULT,'Hammer','Joe','12/06/1976');
+
+
+INSERT INTO cinema VALUES (DEFAULT,'TCMP Le Mans','752 de la grande rue, 72000 Le Mans');
+INSERT INTO cinema VALUES (DEFAULT,'TCMP Paris','12 de la petite rue, 75010 Paris');
+INSERT INTO cinema VALUES (DEFAULT,'TCMP Le Havre','859 de la rue à droite, 14500 Le Havre');
+INSERT INTO cinema VALUES (DEFAULT,'TCMP Lhomme','859 de la grande à gauche, 72730 Lhomme');
+INSERT INTO cinema VALUES (DEFAULT,'TCMP Alpha','859 de la grande devant, 12001 Alpha');
+
+INSERT INTO categorie VALUES (DEFAULT,'course','course de voiture avec action');
+INSERT INTO categorie VALUES (DEFAULT,'film pour adultes','attention à l age');
+INSERT INTO categorie VALUES (DEFAULT,'horreur','L horreur est un genre littéraire s inscrivant dans le registre de la peur. Ce genre met souvent en scène des phénomènes surnaturels (et des créatures à l avenant : vampires, fantomes, loup-garous et autres monstres) ainsi que des psychopathes et des tueurs en séries.');
+
+
+INSERT INTO film VALUES (DEFAULT,(select id_categorie from categorie where nom_categorie='film pour adultes'),18,'Blanches fesses et les sept mains','La petite princesse Blanche-Neige, poursuivie par la jalousie de la méchante reine, se réfugie chez les nains de la forêt. Mais la reine, transformée en sorcière, découvre Blanche-Neige et réussit à lui faire manger une pomme empoisonnée. Les nains croient leur amie morte et la gardent dans un cercueil de verre. Un jour, un prince, ébloui par la beauté de Blanche-Neige, lui donne un baiser et rompt ainsi le sortilège qui la tenait endormie.','12/12/1212',5);
+
+INSERT INTO film VALUES (DEFAULT,(select id_categorie from categorie where nom_categorie='course'),256,'rapide & dangereux 1','La nuit tombée, Dominic Toretto règne sur les rues de Los Angeles à la tête d une équipe de fidèles qui partagent son goût du risque, sa passion de la vitesse et son culte des voitures de sport lancées à plus de 250 km/h dans des rodéos urbains d une rare violence. Ses journées sont consacrées à bricoler et à relooker des modèles haut de gamme, à les rendre toujours plus performants et plus voyants, et à organiser des joutes illicites.','01/01/1997',10);
+
+INSERT INTO film VALUES (DEFAULT,(select id_categorie from categorie where nom_categorie='course'),25,'rapide & dangereux 2','Le FBI et les douanes locales surveillent depuis plusieurs mois le puissant homme d affaires Carter Verone, qu ils soupçonnent de se livrer à des opérations de blanchiment d argent. Leurs efforts restent vains, car le seul indice dont ils disposent pour appâter et démasquer l énigmatique criminel est sa passion pour les rodéos.','01/01/2002',10);
+
+INSERT INTO film VALUES (DEFAULT,(select id_categorie from categorie where nom_categorie='horreur'),255,'Anabelle','Été 1969, John et Mia, qui attendent leur premier enfant, viennent d emménager dans une maison à Santa Monica. John, qui ne sait comment choyer son épouse, lui a offert une poupée ancienne. La nuit suivante, ils sont sauvagement attaqués par un couple lié à une secte satanique. La police leur porte secours rapidement, abattant l homme tandis que sa compagne se tranche la gorge, laissant couler quelques gouttes de sang dans l oeil de la poupée.','11/11/2011',18);
+
+
+
+
+
+INSERT INTO acteur VALUES ((select id_pers from personne where prenom='Nathalie'),(select id_film from film where titre='rapide & dangereux 1')); -- nath pour f&f 1
+
+INSERT INTO acteur VALUES ((select id_pers from personne where prenom='Tony'),(select id_film from film where titre='rapide & dangereux 1')); -- Tony pour f&f 1
+
+INSERT INTO acteur VALUES ((select id_pers from personne where prenom='Pierre'),(select id_film from film where titre='rapide & dangereux 1')); -- Pierre pour f&f 1
+
+INSERT INTO acteur VALUES ((select id_pers from personne where prenom='Thony'),(select id_film from film where titre='rapide & dangereux 2')); -- thony pour f&f 2
+
+INSERT INTO acteur VALUES ((select id_pers from personne where prenom='Tom'),(select id_film from film where titre='rapide & dangereux 2')); -- tom pour f&f 2
+
+INSERT INTO acteur VALUES ((select id_pers from personne where prenom='Maël'),(select id_film from film where titre='rapide & dangereux 1')); -- tony pour f&f 2
+
+INSERT INTO acteur VALUES ((select id_pers from personne where prenom='Tony'),(select id_film from film where titre='rapide & dangereux 2')); -- tony pour f&f 2
+
+INSERT INTO acteur VALUES ((select id_pers from personne where prenom='Tom'),(select id_film from film where titre='Blanches fesses et les sept mains')); -- tom pour blanche neige
+
+INSERT INTO acteur VALUES ((select id_pers from personne where prenom='Nathalie'),(select id_film from film where titre='Blanches fesses et les sept mains')); -- naths pour blanche neige
+
+INSERT INTO realisateur VALUES ((select id_pers from personne where prenom='Cyprien'),(select id_film from film where titre='rapide & dangereux 1')); -- cyp pour r&d 1
+
+INSERT INTO realisateur VALUES ((select id_pers from personne where prenom='Cyprien'),(select id_film from film where titre='rapide & dangereux 2')); -- cyp pour f&f 2
+
+INSERT INTO realisateur VALUES ((select id_pers from personne where prenom='Thibault'),(select id_film from film where titre='Anabelle')); -- thibault pour anabelle
+
+INSERT INTO realisateur VALUES ((select id_pers from personne where prenom='Thibault'),(select id_film from film where titre='Blanches fesses et les sept mains')); -- thibault pour blanche neige
+
+
+INSERT INTO forfait VALUES (DEFAULT,30,'je viens quand je veux'); -- forfait je viens quand je veux
+INSERT INTO forfait VALUES (DEFAULT,15,'patron incognito'); -- forfait patron incognito
+
+
+INSERT INTO compte VALUES ((select id_pers from personne where prenom='Thibault'),DEFAULT,'JeSuisLePlusDrole@wanadoo.fr','PierreEstMoinsDrole'); -- compte de thibault 
+INSERT INTO compte VALUES ((select id_pers from personne where prenom='Tony'),DEFAULT,'EnfantDeLumiere@cegetel.net','JeSuisLeMeilleur'); -- compte de tony 
+INSERT INTO compte VALUES ((select id_pers from personne where prenom='Tom'),DEFAULT,'MissionImpossible@univ-lemans.fr','JeSuisLeMeilleur'); -- compte de tom cruise
+
+INSERT INTO souscription VALUES ((select id_compte from compte where adresse_mail = 'JeSuisLePlusDrole@wanadoo.fr'),(select id_forfait from forfait where nom_forfait='je viens quand je veux'),'12/12/2019','12/12/2020');
+INSERT INTO souscription VALUES ((select id_compte from compte where adresse_mail = 'EnfantDeLumiere@cegetel.net'),(select id_forfait from forfait where nom_forfait='patron incognito'),'11/02/2022',NULL);
+INSERT INTO souscription VALUES ((select id_compte from compte where adresse_mail = 'MissionImpossible@univ-lemans.fr'),(select id_forfait from forfait where nom_forfait='je viens quand je veux'),'22/10/2017','22/10/2022');
+
+
+
+
+
+INSERT INTO confiserie VALUES (DEFAULT, 'maltesers',2);
+INSERT INTO confiserie VALUES (DEFAULT, 'm&ms',2);
+INSERT INTO confiserie VALUES (DEFAULT, 'coca',3);
+INSERT INTO confiserie VALUES (DEFAULT, 'kinder',5);
+INSERT INTO confiserie VALUES (DEFAULT, 'pepsi',4);
+
+
+
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'maltesers'),(select id_cine from cinema where nom_cine='TCMP Le Havre'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'm&ms'),(select id_cine from cinema where nom_cine='TCMP Le Havre'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'coca'),(select id_cine from cinema where nom_cine='TCMP Le Havre'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'kinder'),(select id_cine from cinema where nom_cine='TCMP Paris'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'pepsi'),(select id_cine from cinema where nom_cine='TCMP Paris'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'maltesers'),(select id_cine from cinema where nom_cine='TCMP Paris'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'm&ms'),(select id_cine from cinema where nom_cine='TCMP Le Mans'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'coca'),(select id_cine from cinema where nom_cine='TCMP Le Mans'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'kinder'),(select id_cine from cinema where nom_cine='TCMP Le Mans'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'pepsi'),(select id_cine from cinema where nom_cine='TCMP Lhomme'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'maltesers'),(select id_cine from cinema where nom_cine='TCMP Lhomme'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'm&ms'),(select id_cine from cinema where nom_cine='TCMP Lhomme'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'coca'),(select id_cine from cinema where nom_cine='TCMP Alpha'));
+INSERT INTO kiosque VALUES ((select id_confiserie from confiserie where aliment = 'kinder'),(select id_cine from cinema where nom_cine='TCMP Alpha'));
+ 
+
+
+
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Le Havre'),1); 
+-- salle 1 au cinema du havre possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Paris'),1); 
+-- salle 2 au cinema de paris possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Le Havre'),2); 
+-- salle 3 au cinema du havre possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Le Mans'),1); 
+-- salle 4 au cinema de Mans possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Le Mans'),2); 
+-- salle 5 au cinema du Mans possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Le Mans'),3); 
+-- salle 6 au cinema de Mans possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Alpha'),1); 
+-- salle 7 au cinema du Alpha possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Lhomme'),1); 
+-- salle 8 au cinema de Lhomme possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Lhomme'),2); 
+-- salle 9 au cinema du Lhomme possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Alpha'),2); 
+-- salle 10 au cinema de Alpha possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Lhomme'),3); 
+-- salle 11 au cinema du Lhomme possède 20 places
+
+INSERT INTO salle VALUES (DEFAULT,(select id_cine from cinema where nom_cine='TCMP Paris'),2); 
+-- salle 12 au cinema de paris possède 20 places
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre' )and numero_salle=1),'p',0); 
+-- salle 0 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre' )and numero_salle=1),'p',1); 
+-- salle 0 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'p',2); 
+-- salle 0 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'p',3); 
+-- salle  au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'p',4); 
+-- salle 0 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'p',5); 
+-- salle 0 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'q',6); 
+-- salle 0 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'q',7); 
+-- salle 0 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'q',8); 
+-- salle 0 au rang r et la place 8
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'q',9); -- salle 0 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'q',10); -- salle 2 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'r',11); -- salle 2 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'r',12); -- salle 2 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'r',13); -- salle 2 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'r',14); -- salle 2 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'s',15); -- salle 2 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'s',16); -- salle 2 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'s',17); -- salle 2 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'s',18); -- salle 2 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1),'s',19); -- salle 2 au rang r et la place 19
+
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'p',0); -- salle 1 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'p',1); -- salle 1 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'p',2); -- salle 1 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'p',3); -- salle 1 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'p',4); -- salle 1 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'q',6); -- salle 1 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'q',7); -- salle 1 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'q',8); -- salle 1 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'q',9); -- salle 1 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'q',10); -- salle 2 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'r',11); -- salle 2 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'r',12); -- salle 2 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'r',13); -- salle 2 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'r',14); -- salle 2 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'s',15); -- salle 2 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'s',16); -- salle 2 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'s',17); -- salle 2 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'s',18); -- salle 2 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1),'s',19); -- salle 2 au rang r et la place 19
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre' )and numero_salle=2),'p',0); -- salle 0 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre' )and numero_salle=2),'p',1); -- salle 0 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'p',2);-- salle 0 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'p',3); -- salle  au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'p',4); -- salle 0 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'p',5); -- salle 0 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'q',6); -- salle 0 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'q',7);-- salle 0 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'q',8); -- salle 0 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'q',9); -- salle 0 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'q',10); -- salle 2 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'r',11); -- salle 2 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'r',12); -- salle 2 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'r',13); -- salle 2 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'r',14); -- salle 2 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'s',15); -- salle 2 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'s',16); -- salle 2 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'s',17); -- salle 2 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'s',18); -- salle 2 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),'s',19); -- salle 2 au rang r et la place 19
+
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'p',0); -- salle 3 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'p',1); -- salle 3 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'p',2); -- salle 3 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'p',4); -- salle 3 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'p',5); -- salle 3 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'q',6); -- salle 3 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'q',7); -- salle 3 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'q',8); -- salle 3 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'q',9); -- salle 3 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'q',10); -- salle 2 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'r',11); -- salle 2 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'r',12); -- salle 2 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'r',13); -- salle 2 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'r',14); -- salle 2 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'s',15); -- salle 2 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'s',16); -- salle 2 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'s',17); -- salle 2 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'s',18); -- salle 2 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),'s',19); -- salle 2 au rang r et la place 19
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'p',0); -- salle 4 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'p',1); -- salle 4 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'p',2); -- salle 4 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'p',3); -- salle 4 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'p',4); -- salle 4 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'p',5); -- salle 4 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'q',6); -- salle 4 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'q',7); -- salle 4 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'q',8); -- salle 4 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'q',9); -- salle 4 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'q',10); -- salle 2 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'r',11); -- salle 2 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'r',12); -- salle 2 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'r',13); -- salle 2 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'r',14); -- salle 2 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'s',15); -- salle 2 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'s',16); -- salle 2 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'s',17); -- salle 2 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'s',18); -- salle 2 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),'s',19); -- salle 2 au rang r et la place 19
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'p',0); -- salle 5 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'p',1); -- salle 5 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'p',2); -- salle 5 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'p',3); -- salle 5 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'p',4); -- salle 5 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'p',5); -- salle 5 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'q',6); -- salle 5 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'q',7); -- salle 5 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'q',8); -- salle 5 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'q',9); -- salle 5 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'q',10); -- salle 2 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'r',11); -- salle 2 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'r',12); -- salle 2 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'r',13); -- salle 2 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'r',14); -- salle 2 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'s',15); -- salle 2 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'s',16); -- salle 2 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'s',17); -- salle 2 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'s',18); -- salle 2 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=3),'s',19); -- salle 2 au rang r et la place 19
+
+
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'p',0); -- salle 6 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'p',1); -- salle 6 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'p',2); -- salle 6 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'p',3); -- salle 6 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'p',4); -- salle 6 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'p',5); -- salle 6 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'q',6); -- salle 6 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'q',7); -- salle 6 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'q',8); -- salle 6 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'q',9); -- salle 6 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'q',10); -- salle 2 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'r',11); -- salle 2 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'r',12); -- salle 2 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'r',13); -- salle 2 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'r',14); -- salle 2 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'s',15); -- salle 2 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'s',16); -- salle 2 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'s',17); -- salle 2 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'s',18); -- salle 2 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),'s',19); -- salle 2 au rang r et la place 19
+
+
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'p',0); -- salle 7 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'p',1); -- salle 7 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'p',2); -- salle 7 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'p',3); -- salle 7 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'p',4); -- salle 7 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'p',5); -- salle 7 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'q',6); -- salle 7 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'q',7); -- salle 7 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'q',8); -- salle 7 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'q',9); -- salle 7 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'q',10); -- salle 7 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'r',11); -- salle 7 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'r',12); -- salle 7 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'r',13); -- salle 7 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'r',14); -- salle 7 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'s',15); -- salle 7 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'s',16); -- salle 7 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'s',17); -- salle 7 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'s',18); -- salle 7 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),'s',19); -- salle 7 au rang r et la place 19
+
+
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'p',0); -- salle 8 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'p',1); -- salle 8 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'p',2); -- salle 7 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'p',3); -- salle 8 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'p',4); -- salle 8 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'p',5); -- salle 8 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'q',6); -- salle 8 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'q',7); -- salle 8 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'q',8); -- salle 8 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'q',9); -- salle 8 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'q',10); -- salle 8 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'r',11); -- salle 8 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'r',12); -- salle 8 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'r',13); -- salle 8 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'r',14); -- salle 8 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'s',15); -- salle 8 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'s',16); -- salle 8 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'s',17); -- salle 8 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'s',18); -- salle 8 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),'s',19); -- salle 8 au rang r et la place 19
+
+
+
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'p',0); -- salle 9 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'p',1); -- salle 9 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'p',2); -- salle 9 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'p',3); -- salle 9 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'p',4); -- salle 9 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'p',5); -- salle 9 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'q',6); -- salle 9 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'q',7); -- salle 9 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'q',8); -- salle 9 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'q',9); -- salle 9 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'q',10); -- salle 9 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'r',11); -- salle 9 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'r',12); -- salle 9 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'r',13); -- salle 9 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'r',14); -- salle 9 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'s',15); -- salle 9 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'s',16); -- salle 9 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'s',17); -- salle 9 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'s',18); -- salle 9 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),'s',19); -- salle 9 au rang r et la place 19
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'p',0); -- salle 10 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'p',1); -- salle 10 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'p',2); -- salle 10 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'p',3); -- salle 10 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'p',4); -- salle 10 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'p',5); -- salle 10 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'q',6); -- salle 10 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'q',7); -- salle 10 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'q',8); -- salle 10 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'q',9); -- salle 10 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'q',10); -- salle 10 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'r',11); -- salle 10 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'r',12); -- salle 10 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'r',13); -- salle 10 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'r',14); -- salle 10 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'s',15); -- salle 10 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'s',16); -- salle 10 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'s',17); -- salle 10 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'s',18); -- salle 10 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),'s',19); -- salle 10 au rang r et la place 19
+
+
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'p',0); -- salle 11 au rang r et la place 0
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'p',1); -- salle 11 au rang r et la place 1
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'p',2); -- salle 11 au rang r et la place 2
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'p',3); -- salle 11 au rang r et la place 3
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'p',4); -- salle 11 au rang r et la place 4
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'p',5); -- salle 11 au rang r et la place 5
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'q',6); -- salle 11 au rang r et la place 6
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'q',7); -- salle 11 au rang r et la place 7
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'q',8); -- salle 11 au rang r et la place 8
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'q',9); -- salle 11 au rang r et la place 9
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'q',10); -- salle 11 au rang r et la place 10
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'r',11); -- salle 11 au rang r et la place 11
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'r',12); -- salle 11 au rang r et la place 12
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'r',13); -- salle 11 au rang r et la place 13
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'r',14); -- salle 11 au rang r et la place 14
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'s',15); -- salle 11 au rang r et la place 15
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'s',16); -- salle 11 au rang r et la place 16
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'s',17); -- salle 11 au rang r et la place 17
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'s',18); -- salle 11 au rang r et la place 18
+INSERT INTO place VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),'s',19); -- salle 11 au rang r et la place 19
+
+
+
+
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=2),
+(select id_film from film where titre='rapide & dangereux 2'),'12/12/2022',15,18.5);
+ -- seance 0 du 12/12/2022 dans la salle 1 pour le film FF2 reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2),
+(select id_film from film where titre='rapide & dangereux 1'),'12/12/2022',15,18.5); 
+-- seance 1 du 13/12/2022 dans la salle 2 pour le film FF1 reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2),
+(select id_film from film where titre='Blanches fesses et les sept mains'),'12/12/2022',15,18.5); 
+-- seance 2 du 12/12/2022 dans la salle 4 pour le film blanche reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=1),
+(select id_film from film where titre='Blanches fesses et les sept mains'),'12/12/2022',15,18.5); 
+-- seance 3 du 12/12/2022 dans la salle 4 pour le film blanche reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),
+(select id_film from film where titre='Blanches fesses et les sept mains'),'12/12/2022',15,18.5); 
+-- seance 4 du 12/12/2022 dans la salle 5 pour le film blanche reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=2),
+(select id_film from film where titre='Blanches fesses et les sept mains'),'12/12/2022',15,18.5); 
+-- seance 5 du 12/12/2022 dans la salle 5 pour le film blanche reserve avec le ticket 0 debut de seance 15h fin à 18h30
+ 
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1),
+(select id_film from film where titre='Anabelle'),'14/12/2022',15,18.5); 
+-- seance 6 du 14/12/2022 dans la salle 6 pour le film Anabelle reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),
+(select id_film from film where titre='Anabelle'),'12/12/2022',15,18.5); 
+-- seance 7 du 12/12/2022 dans la salle 6 pour le film Anabelle reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=3),
+(select id_film from film where titre='Anabelle'),'12/12/2022',15,18.5); 
+-- seance 8 du 12/12/2022 dans la salle 7 pour le film Anabelle  reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=2),
+(select id_film from film where titre='Anabelle'),'12/12/2022',12,15); 
+-- seance 9 du 12/12/2022 dans la salle 7 pour le film Anabelle reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+INSERT INTO seance VALUES (DEFAULT,(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1),
+(select id_film from film where titre='rapide & dangereux 1'),'12/01/2023',15,18.5); 
+-- seance 10 du 12/12/2022 dans la salle 8 pour le film FF1 reserve avec le ticket 0 debut de seance 15h fin à 18h30 
+
+
+
+
+INSERT INTO ticket VALUES (DEFAULT,(select id_pers from personne where prenom='Nathalie'),
+(select id_seance from seance where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2)),
+(select id_place from place where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=2) and rang='r' and num_place=13),
+'10/10/2022',15.5); 
+
+
+
+
+
+
+
+INSERT INTO ticket VALUES (DEFAULT,(select id_pers from personne where prenom='Joe'),
+(select id_seance from seance where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1)),
+(select id_place from place where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Havre')and numero_salle=1)and rang='p' and num_place=3),
+'10/11/2022',18.5); 
+INSERT INTO ticket VALUES (DEFAULT,(select id_pers from personne where prenom='Tony'),
+(select id_seance from seance where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2)),
+(select id_place from place where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Le Mans')and numero_salle=2)and rang='r' and num_place=12),
+'12/10/2022',15.5); 
+INSERT INTO ticket VALUES (DEFAULT,(select id_pers from personne where prenom='Pierre'),
+(select id_seance from seance where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1)),
+(select id_place from place where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Paris')and numero_salle=1)and rang='p' and num_place=0),
+'10/11/2022',18.5); 
+INSERT INTO ticket VALUES (DEFAULT,(select id_pers from personne where prenom='Maël'),
+(select id_seance from seance where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1)),
+(select id_place from place where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Lhomme')and numero_salle=1)and rang='s' and num_place=15),
+'10/10/2022',15.5); 
+INSERT INTO ticket VALUES (DEFAULT,(select id_pers from personne where prenom='Cyprien'),
+(select id_seance from seance where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1)and jour_seance='12/12/2022'),
+(select id_place from place where id_salle in(select id_salle from salle where id_cinema in(select id_cine from cinema where nom_cine='TCMP Alpha')and numero_salle=1)and rang='p' and num_place=5),
+'10/09/2022',13.0); 
+
+
+

@@ -1,0 +1,21 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww33400\viewh17620\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 PERSONNE(\ul id_pers\ulnone , nom, prenom, date_naiss)\
+CINEMA(\ul id_cine,\ulnone  nom,cine, adresse, nom_salle)\
+FLIM(id_film, titre dur\'e9e,  synopsis, date_sortie, age_min);\
+CATEGORIE(\ul id_categorie\ulnone , nom_categorie, description)\
+JOUE(\ul #id_film, #id_pers\ulnone )\
+R\'c9ALISE(\ul #id_pers, #id_film\ulnone )\
+COMPTE(\ul id_compte\ulnone , \ul adresse_mail\ulnone , mot_de_passe, #id_pers)\
+FORFAIT(\ul id_forfait\ulnone , prix_mensuel, nom_forfait)\
+SOUSCRIT(\ul #id_forfait, #id_compte\ulnone , date-deb, date_fin)\
+CONFISERIE(\ul id_confiserie\ulnone , prix, aliment, \ul #id_cinema\ulnone )\
+SALLE(\ul id_salle\ulnone , nb_place, #id_film, \ul #id_cinema\ulnone )\
+SEANCE(\ul id_seance\ulnone , jour_snc, heure_deb_snc, heure_fin_snc)\
+PLACE(\ul id_place\ulnone , rang, numero_place, \ul #id_salle, #id_salle(cinema)\ulnone , #id_seance)\
+RESERVE(jour, heure, \ul #id_seance, #id_pers\ulnone )}

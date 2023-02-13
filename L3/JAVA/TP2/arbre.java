@@ -1,0 +1,4 @@
+class arbre{
+    Noeud racine;
+    
+}

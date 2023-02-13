@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "longueur_max.h": "c",
+        "source.h": "c",
+        "gold.h": "c",
+        "decodage_binaire.h": "c",
+        "codage_hdbn.h": "c",
+        "codage_arithmetique.h": "c"
+    }
+}

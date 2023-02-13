@@ -1,0 +1,14 @@
+Compte Rendu sur les verrous
+COMTE Clément
+
+Dans vision.c un verrou en lecture est placé sur le fichier MER à chaque fois que celui est modifié pour afficher son contenue.
+Le verrou est enlever après l'affichage afin de pouvoir de nouveau écrire dans le fichier MER.
+
+Dans navire.c un verrou en écriture est placé sur le fichier entier de la MER afin d'initialiser le bateau sur la mer et de changer le nombre de bateau sur la mer.
+Ensuite à chaque déplacement (temps aléatoire entre chaaque déplaacments) un verrou en lecture est placé sur le fichier entier de la MER pour récupérer les informations sur les voisins, le nombre de bateaux restants, rechercher une cible à acquérir et lire si le bateau à été touché.
+
+Lorsqu'un bateau possède une énergie supérieur au seuil minimal un verrou en écriture est positionné sur lui-même, ainsi on ne peut pas écrire sur lui (on ne peut pas lui tirer dessus).
+Lorsqu'un bateau a trouvé des voisins sur lesquels il peut se déplacer un verrou en écriture sur les coordonées des voisins est placé pour effectuer le déplacment.
+Lorsqu'une cible a été trouvé un verrou en écriture non bloquants est positionné aux coordonnées de la cible, ainsi si la cible possède un verrou en écriture sur elle-même on ne peut pas lui tirer dessus et continuer l'éxécution du processus quand même (on n'attends pas qu'il libère son verrou en lecture).
+Lorsque le bateau est touché un verrou en écriture est positionné sur lui même afin de pouvoir le supprimer du fichier MER.
+

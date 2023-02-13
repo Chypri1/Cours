@@ -1,0 +1,135 @@
+DROP TABLE IF EXISTS ticket, seance, place, salle, confiserie, cinema, categorie, forfait, compte, realisateur, acteur, film, personne , souscription, kiosque cascade;
+
+
+
+
+CREATE TABLE personne (
+	id_pers serial primary key,
+	nom varchar(50),
+	prenom varchar(50),
+	date_naiss date
+   );
+
+
+
+CREATE TABLE cinema (
+	id_cine serial primary key,
+	nom_cine varchar(50),
+	adresse varchar(50)
+   );
+
+
+
+CREATE TABLE categorie (
+	id_categorie serial primary key,
+	nom_categorie varchar(50),
+	description varchar(2000)
+   );
+
+ 
+
+CREATE TABLE film (
+	id_film serial,
+	id_categorie int references categorie,
+	duree int,
+	titre varchar(50),
+	synopsis varchar(500),
+	date_sortie date,
+	age_min int check(age_min between 5 and 200),
+	primary key(id_film)
+   );
+
+
+
+CREATE TABLE acteur(
+	id_pers int references personne,
+	id_film int references film,
+	primary key (id_pers, id_film)
+   );
+
+
+
+CREATE TABLE realisateur(
+	id_pers int references personne,
+	id_film int references film,
+	primary key (id_pers, id_film)
+   );
+
+
+
+CREATE TABLE forfait(
+	id_forfait serial,
+	prix_mensuel int,
+	nom_forfait varchar(50),
+	primary key(id_forfait)
+   );
+
+
+CREATE TABLE compte(
+	id_pers int references personne,
+	id_compte serial primary key,
+	adresse_mail varchar(50),
+	mdp varchar(100)
+   );
+
+CREATE TABLE souscription(
+	id_compte int references compte,
+	id_forfait int references forfait,
+	date_deb date,
+	date_fin date,
+	primary key(id_compte,id_forfait,date_deb)
+   );
+ 	
+CREATE TABLE confiserie(
+	id_confiserie serial primary key,
+	aliment varchar(30),
+	prix numeric(4,2)
+);
+
+CREATE TABLE kiosque(
+	id_confiserie int references confiserie,
+	id_cinema int references cinema,
+	primary key (id_confiserie, id_cinema)
+   );
+
+CREATE TABLE salle(
+	id_salle serial,
+	id_cinema int references cinema,
+	numero_salle int,
+	primary key (id_salle)
+   );
+
+CREATE TABLE place(
+	id_place serial,
+	id_salle int references salle,
+	rang varchar(10),
+	num_place int,
+	primary key (id_place)
+   );
+
+
+
+
+CREATE TABLE seance(
+	id_seance serial,
+	id_salle int references salle,
+	id_film int references film,
+	jour_seance date,
+	heure_deb_seance numeric,
+	heure_fin_seance numeric,
+	primary key(id_seance)
+   );
+
+
+ 
+
+
+CREATE TABLE ticket(
+	id_ticket serial,
+	id_pers int references personne,
+	id_seance int references seance,
+	id_place int references place,
+	jour_achat date,
+	heure_achat numeric,
+	primary key (id_ticket)
+   );

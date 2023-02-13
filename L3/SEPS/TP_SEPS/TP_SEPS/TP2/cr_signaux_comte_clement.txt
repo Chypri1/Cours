@@ -1,0 +1,10 @@
+Dans cette version de la bataille navale on utilise des signaux pour communiquer entre les navires et l'amiral qui est le seul à écrire et lire dans la mer.
+
+Un signal est envoyé du navire vers l'amiral pour se déplacer et tenter de tirer si le bateau n'est pas encore créé, amiral créer le bateau.
+Si le bateau ne peut pas etre créer un signal est envoyé au navire pour terminer son processus.
+
+Quand un bateau à trouver une cible un signal est envoyé à la cible pour lui dire de s'arreter. Ce signal est ignoré par les navires tant que leur bouclier
+n'est pas en dessous du seuil. Une fois le bouclier en dessous du suil le signal est capturer afin de terminer le processus du navire et envoyer un signal à
+l'amiral afin de couler le btaeau correspondant.
+
+Une fois qu'il ne reste plus qu'un bateau (baateau gagnant) ont envoie un signal au navire afin qu'il termine son processus.
