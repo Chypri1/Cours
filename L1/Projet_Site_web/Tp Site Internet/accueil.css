@@ -1,0 +1,110 @@
+
+*{      /*Réinitialisation des marges + famille de police*/
+  font-family: Noto Sans, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  font-size: 100%;
+  /*border: 1px solid red;*/
+}
+
+.slogan{
+  font-size : 20px;
+  background-color : black;
+  color : #C4C4C4;
+  padding: 50px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.titreProduit{
+  margin: auto;
+  padding: 5% 0 1% 0;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.resumeProduit{
+  margin: auto;
+  font-size: 20px;
+  width: 30%;
+}
+
+.achatProduit{
+  margin: auto;
+  font-size: 15px;
+  padding : 5%;
+  width: 70%;
+}
+
+nav ul{     /*Effacer la mise en forme des éléments de la liste et centrage de la liste*/
+  list-style-type: none;
+  display: table;
+  margin: auto;
+}
+
+.mobile{
+  display : none;
+}
+
+nav ul li{     /*Espacement des onglets --> 100% / nombre d'éléments*/
+  float: left;
+  text-align: center;
+  width: 100px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+nav a{
+  text-decoration: none;
+  color : #D8D8D8;
+}
+
+nav a:hover{
+  color: #F3F3F3;
+}
+
+nav{      /*Garder le menu en haut lorsqu'on descend*/
+  width: 100%;
+  position : sticky;
+  top : 0px;
+  opacity : 0.95;
+  background-color : #282828;
+  font-weight: 300;
+}
+
+.boiteBlanche{
+  text-align: center;
+  height : 60%;
+  width: 100%;
+  margin : auto;
+  display: inline-block;
+  background-color: #EBEBEB;
+}
+
+.boiteBlanche a{
+  text-decoration: none;
+  color: #060606;
+}
+
+.boiteNoire{
+  text-align: center;
+  height : 40%;
+  width: 100%;
+  margin : auto;
+  display: inline-block;
+  background-color: #060606;
+}
+
+.boiteNoire a{
+  text-decoration: none;
+  color: #EBEBEB;
+}
+
+
+.image img{
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  display: block;
+  padding : 5%;
+}
