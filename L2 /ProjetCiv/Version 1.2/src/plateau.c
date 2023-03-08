@@ -292,7 +292,6 @@ int adresse=0;
     }
   }
 
-
   clean_ressources(NULL,NULL,texture);
   clean_ressources(NULL,NULL,imagefond);
   fclose(map);

@@ -6,6 +6,7 @@
 
 #include "./headers/admin_SDL.h"
 #include "./headers/menu.h"
+#include "./headers/plateau.h"
 
 
 /**
@@ -41,14 +42,13 @@ void menu(SDL_Window* window, SDL_Renderer* renderer, SDL_Rect rectangle_restart
 
     SDL_RenderFillRect(renderer, &fenetre_surface);
 
-    SDL_Surface* fond = IMG_Load("./image/fond.jpg");
+    SDL_Surface* fond = IMG_Load("./image/ferme.jpg");
     SDL_Texture* fond_Texture = SDL_CreateTextureFromSurface(renderer, fond);
-
     SDL_FreeSurface(fond);
 
     SDL_RenderCopy(renderer, fond_Texture, NULL, &fenetre_surface); /* Copie du sprite grâce au SDL_Renderer*/
 
-    SDL_DestroyTexture(fond_Texture);
+    //SDL_DestroyTexture(fond_Texture);
     SDL_RenderFillRect(renderer, &rectangle_restart);
     SDL_RenderFillRect(renderer, &rectangle_quit);
     SDL_RenderFillRect(renderer, &rectangle_continuer);
@@ -59,7 +59,7 @@ void menu(SDL_Window* window, SDL_Renderer* renderer, SDL_Rect rectangle_restart
     if (bouton_restart == NULL) {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de charger l'image");
+        SDL_ExitWithError("Impossible de charger l'image restart");
     }
 
     bouton_restart_texture = SDL_CreateTextureFromSurface(renderer, bouton_restart);
@@ -68,7 +68,7 @@ void menu(SDL_Window* window, SDL_Renderer* renderer, SDL_Rect rectangle_restart
     if (bouton_restart_texture == NULL) {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de creer le bonton quitter");
+        SDL_ExitWithError("Impossible de creer le bonton restart");
     }
 
     if (SDL_RenderCopy(renderer, bouton_restart_texture, NULL, &rectangle_restart) != 0)
@@ -89,7 +89,7 @@ void menu(SDL_Window* window, SDL_Renderer* renderer, SDL_Rect rectangle_restart
     if (bouton_continuer == NULL) {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de charger l'image");
+        SDL_ExitWithError("Impossible de charger l'image continuer");
     }
 
     bouton_continuer_texture = SDL_CreateTextureFromSurface(renderer, bouton_continuer);
@@ -98,7 +98,7 @@ void menu(SDL_Window* window, SDL_Renderer* renderer, SDL_Rect rectangle_restart
     if (bouton_continuer_texture == NULL) {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de creer le bonton quitter");
+        SDL_ExitWithError("Impossible de creer le bonton continuer");
     }
 
     if (SDL_RenderCopy(renderer, bouton_continuer_texture, NULL, &rectangle_continuer) != 0)
@@ -122,7 +122,7 @@ void menu(SDL_Window* window, SDL_Renderer* renderer, SDL_Rect rectangle_restart
     if (bouton_quit == NULL) {
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de charger l'image");
+        SDL_ExitWithError("Impossible de charger l'image quitter");
     }
 
     bouton_quit_texture = SDL_CreateTextureFromSurface(renderer, bouton_quit);
@@ -241,4 +241,5 @@ while ((SDL_PollEvent(&event))||(trouve!=1)){
                 break;
         }
     }
+    return 0;
 }

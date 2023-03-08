@@ -1,0 +1,52 @@
+Persona 1:
+nom: Georges Guy
+Profession: Journaliste
+age:40
+
+Objectif: 
+-se renseigner sur les meurtres aux alentours de chez lui
+
+Motivation: 
+-enrichir son article
+
+Contraintes: 
+-infos claires
+-sources précises 
+-possibilité de recherche par région ou par nom voire formulaire pour plus de précision
+
+
+Persona 2:
+nom: Jonathan Daval
+Profession: Étudiant
+Statut: Célibataire 
+age:17 
+
+Objectif: 
+-se faire peur entre amis(contexte: ils sont en soirée horreur)
+
+Motivation:
+-se faire peur entre eux 
+
+Contraintes: 
+-infos succintes et précises
+-image de la tête du gars 
+ 
+
+Persona 3: 
+nom: Fabienne Dupond
+Profession: secrétaire
+Statut: Mariée, a 2 jeunes enfants
+age: 35
+
+Objectif:
+-se renseigner sur les meurtres par rapport à où elle habite 
+-a lancé une procédure de divorce
+
+Motivation:
+-se rassurer sur la région où elle habite
+-pour que ses enfants aille à l'école seul un jour
+-pour qu'elle ne meurt pas de coup de pelle à cause de son mari
+ 
+Contraintes:
+-Afficher petit résumé 
+

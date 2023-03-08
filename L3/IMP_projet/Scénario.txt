@@ -1,0 +1,17 @@
+
+
+Scénario du persona1: 
+Georges Guy est un journaliste de 40 ans qui travaille sur le meurtre d'une femme prénommée Jeannine. Il cherche à comparer le meurtre avec un meurtre qu'il se serait potentiellement passé il y a quelques années. Il va donc chercher sur la carte l'endroit ou c'est passé le meurtre de Jeannine. Il trouve qu'il y a eu un meurtre très similaire à ce qui est arrivé à Jeannine. Il trouve que ne n'est malgré tout pas suffisant. Il va donc chercher dans un formulaire les meurtres qui ont les mêmes circonstances que celui de Jeannine. Il cherche des meurtres par strangulation. Il note cette donnée dans le formulaire et cela lui affiche une liste des meurtres par strangulation. Il va chercher les vidéos en lien avec le meurtre en lien avec le meurtre de Fabienne et regarde les liens des sources du site pour en connaître plus.
+
+
+Scénario du persona2:
+Jonathan est un étudiant de 17 ans. Il est à une soirée horreur entre amis et il veux raconter des histoires qui font peur. Il va donc sur le site et clique sur son département pour avoir la liste des meurtres. Il tombe sur une histoire qui s'est passé dans son village il y a 20 ans. Cette gauche l'a intéressé et il va donc chercher sur YouTube une vidéo qui en parle en cliquant sur le lien rattaché à la fiche. 
+
+
+Scénario du persona 3:
+Fabienne utilise le site "Meurtre & Moselle" pour chercher dans son département les tueurs en série avec viol sur mineurs. Elle compte laisser ses enfants aller à l'école dans le futur donc des recherches s'imposent. 
+Elle cherche donc sur la carte le département où elle habite. Elle découvre qu'il y a eu un meurtre et agression sexuelle à moins de 10 km de chez elle. Elle se rend compte qu'elle doit aller vivre plus loin. Elle a aussi une procédure judiciaire de divorce en cours avec son mari. 
+Elle en profite donc pour rechercher des meurtres qui se sont réalisés alors qu'une procédure de divorce était en cours avec le formulaire mis à disposition.
+ Elle se rend compte qu'un meurtre à la pelle s'est déroulé dernièrement. Elle décide d'aller voir sur le site en cliquant sur le lien pour connaitre toutes les informations de cette affaire. 
+
+
