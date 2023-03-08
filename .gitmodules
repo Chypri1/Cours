@@ -1,3 +1,6 @@
 [submodule "L3/Génie Logiciel 2/Nurikabe"]
 	path = L3/Génie Logiciel 2/Nurikabe
 	url = git@github.com:ju-rouaux/Nurikabe.git
+[submodule "IMP_projet/Meurtre-et-Moselle"]
+	path = IMP_projet/Meurtre-et-Moselle
+	url = git@github.com:Elziix/Meutre-et-Moselle.git
