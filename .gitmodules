@@ -4,3 +4,6 @@
 [submodule "IMP_projet/Meurtre-et-Moselle"]
 	path = IMP_projet/Meurtre-et-Moselle
 	url = git@github.com:Elziix/Meutre-et-Moselle.git
+[submodule "L3/IPM/Meurtre-et-Moselle"]
+	path = L3/IPM/Meurtre-et-Moselle
+	url = git@github.com:Elziix/Meutre-et-Moselle.git
