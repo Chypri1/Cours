@@ -1,0 +1,23 @@
+
+Design Pattern de Christophe Despres
+
+CM1:
+
+Déf :
+1er principe de conception orienté objet:
+Identifiez les aspects de votre application qui varient et séparez ceux qui changent de ceux qui demeurent constants
+
+
+Déf:
+Principe de conception orienté objet: 
+Préférez la composition à l’héritage	
+
+
+CM2:
+
+Déf: principe ouvert-fermé
+Les classes doivent être ouvertes à l'extension mais fermés à la modification
+
+CM3:
+
+
