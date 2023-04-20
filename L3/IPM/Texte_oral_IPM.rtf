@@ -1,0 +1,38 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2707
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11560\viewh15560\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Plus court pour que ce soit plus compr\'e9hensible.\
+\
+\
+Tout d\'92abord, on a fait une liste d\'92API qu\'92on voudrait utiliser:\
+Une API pour avoir une carte et quelques autres pour avoir les informations des tueurs qui se situerait \'e0 l\'92endroit o\'f9 l\'92on a cliqu\'e9. \
+On s\'92est vite rendu compte qu\'92il nous faudrait une API pour faire les liens entre les informations qu\'92on avait r\'e9cup\'e9rer de la carte et les lieux des meurtres. \
+\
+On en est finalement venu \'e0 \'e7a:\
+MapBox qui nous servirait pour avoir la carte ainsi que le pin \
+Le d\'e9coupage administratif pour permettre d\'92exploiter les informations du pin r\'e9cup\'e9r\'e9\
+Et les API d\'92informations :\
+Interpol pour les criminelles en cours \
+News pour avoir des articles \
+Et Wikip\'e9dia pour les informations des affaires plus anciennes \
+\
+\
+\
+\
+Avec le temps, et les essais d\'92exploitation des diff\'e9rentes API, on a eu des probl\'e8mes avec les API d\'92Interpol et de News.\
+Concernant Interpol :\
+\'c7a ne prend que sur la France et non les d\'e9partements\
+De plus, les criminelles pouvaient \'eatre \'ab\'a0seulement\'a0\'bb des dealers en fuite.\
+Lorsqu\'92on recherche des criminelles fran\'e7ais, ils pouvaient avoir commis des meurtres dans d\'92autres pays que la France, ce qui ne nous int\'e9ressait pas. \
+\
+Pour News API:\
+Il aurait fallu cr\'e9er une basse de donn\'e9es d\'fb au nombre limit\'e9 de requ\'eates possibles. De plus, on \'e9tait limit\'e9 par le temps, c\'92est \'e0 dire qu\'92on ne pouvait r\'e9cup\'e9rer des informations que sur les articles des 3 derniers mois. \
+\
+\
+Sch\'e9ma :  mapbox -> d\'e9coupage admin -> wikipedia \
+\
+Comme vous le voyez, les informations du site fonctionne comme ceci. Je vais maintenant passer la main \'e0 Killian qui vous expliquera pr\'e9cis\'e9ment comment cela fonctionne.}
