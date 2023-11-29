@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include "headers/admin_SDL.h"
@@ -81,12 +82,12 @@ void SDL_AfficherUneImage(SDL_Renderer *renderer,SDL_Surface *image,SDL_Texture 
 */
 
 
-int fonction_rand_biome (int biome,int i,int j){
-int biom;
-biom=rand()%20+1;
-biome=biom;
-return (biome);
+int fonction_rand_biome(int *biome, int i, int j) {
+    int biom = rand() % 20 + 1;
+    *biome = biom;
+    return (*biome);
 }
+
 
 
 
@@ -154,7 +155,7 @@ int affectation_cases(int biome[N][N],SDL_Rect cases[LONGUEUR_CASE][LARGEUR_CASE
     for(i=1;i<=19;i++){
       for(j=0;j<=19;j++){
 
-          biome[i][j]=fonction_rand_biome(biome[i][j],i,j);
+          biome[i][j]=fonction_rand_biome(&biome[i][j],i,j);
           fprintf( map, "%i ",biome[i][j]);
       }
     }

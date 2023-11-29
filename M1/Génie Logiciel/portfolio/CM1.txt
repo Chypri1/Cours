@@ -1,0 +1,46 @@
+Contenu d'un CV:
+
+Études 
+Expérience Informatique
+Job été 
+Technos
+Soft Skills 
+Compétences
+Activités Extra pro
+Liens vers projets 
+Titre -> objectif
+Durées
+Photo
+Langues
+Permis / Certification
+
+
+Liste d'un CV
+Adresse:
+Titre du CV:
+Études:
+Technos: OS -> Windows, Linux, Mac
+	 BDD -> SQL, ...
+	 Langage -> C, C++, Java, ...
+	 Framework -> Angular, Eclipse, ...
+Expériences pro infos:
+	Nom de l'entreprise, Lieu, date de début, date de fin/ projet en une phrase
+		- Lecture de spec
+		- Dev
+		- TU
+		- Doc
+
+Langues
+	- Certification TOEIC
+
+Activités 
+	 - projet perso 
+	 - sport perso
+
+Soft skills
+
+
+Cout journalier d'un salarié:
+
+CJ = (Salaire brut * Charge) / Période
+

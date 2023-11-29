@@ -1,0 +1,13 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/Users/apple/Documents/Cours/L2 /ProjetCiv/Version 1.2/bin",
+            "binaryPath": "/Users/apple/Documents/Cours/L2 /ProjetCiv/Version 1.2/bin/test_click",
+            "binaryArgs": []
+        }
+    ],
+    "files.associations": {
+        "sdl_image.h": "c",
+        "plateau.h": "c"
+    }
+}

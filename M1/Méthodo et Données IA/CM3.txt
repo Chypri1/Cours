@@ -1,0 +1,36 @@
+
+Apprentissage supervisée 
+
+Données annotées
+
+Classification -> nombre de classe fini, déjà défini
+Régrétion -> continue et classe pas forcément connues 
+
+Données + Annotation -> Transduction -> Nouvelle données + hypothèse annotation
+
+Données + Annotation -> induction qui donne un modèle -> déduction qui donne de nouvelle données + hypothèse annotation
+
+
+
+
+Apprentissage non-supervisée 
+
+Données non-annotées
+
+
+
+
+Apprentissage semi-supervisé
+
+Données annotées + données non-annotées
+
+
+
+
+Supervisé -> donnée = exemple 
+
+Non-supervisé -> donnée = observation
+
+
+
+

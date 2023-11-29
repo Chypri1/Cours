@@ -1,0 +1,14 @@
+
+sa capacité à parler et ses moyens d'exprimer ses émotions, que ce soit vocalement ou même physiquement, en raison d'une paralysie, sa vie serait très isolée et déprimante. 
+Notre recherche est motivée par le désir des patients souffrant de telles difficultés de transmettre par eux-mêmes et de manière expressive leurs intentions.
+
+
+
+
+
+Les signaux sont modifiés en ajoutant un modèle dépendant des émotions qui fonctionne par chevauchement synchrone de la voix. 
+Il est apparue que la voix est manipulable mais que le principe de modification de la voix apporte un problème. Avec CHATR, un système de synthèse de la voix concaténée à une bas de corpus développé avec ATR, ils proposent une nouvelle approche de synthétisation des émotions dans la parole. Au départ trois émotions sont modélisés, énervé, joie et triste. 
+
+Plusieurs expériences ont montré que certaines émotions rendaient le discours plus intelligible et agréable à l"écoute. Après ça, ils ont développés un système TTS(text-to-speech) en y ajoutant une partie émotion pour les personnes dans l'impossibilité de parler.
+
+

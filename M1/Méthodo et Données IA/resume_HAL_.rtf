@@ -1,0 +1,112 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10640\viewh19380\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+P2\
+Tout d\'92abord, le contenu expressif des bases de donn\'e9es \'e9motionnelles existantes est d\'e9crit en mettant en \'e9vidence les variations possibles pour les syst\'e8mes TTS pilot\'e9s par les donn\'e9es. Ensuite, des syst\'e8mes de pointe ax\'e9s sur les donn\'e9es sont pr\'e9sent\'e9s. En supposant que la prononciation avec la prosodie a un impact significatif sur la parole expressive, des \'e9tudes sur les variantes de prononciation dans le discours \'e9motionnel sont d\'e9taill\'e9es.\
+\
+\
+P2.1\
+\
+Les \'e9motions sont un ph\'e9nom\'e8ne complexe et trouver l\'92une d\'92elle est une tache difficile. Selon Scherer, le nombre de r\'e9action selon les situations est infinie, confie et m\'e9lang\'e9e avec d\'92autres \'e9motions. Les bases de donn\'e9es existantes se limitent \'e0 6 \'e9motions(joie, tristesse, \'e9nervement, d\'e9go\'fbt, surprise et la peur).\
+\
+En litt\'e9rature 3 BDD \'e9motionnelles, l\'92un est celle ou les \'e9motions sont simul\'e9 par des acteurs professionnels; La seconde est celle collect\'e9s de fa\'e7on spontan\'e9es avec des sc\'e9narios de la vie r\'e9elle. La troisi\'e8me est induite par des sc\'e9narios script\'e9s. Cependant la BDD avec les \'e9motions spontan\'e9es sont bien plus challengeantes a pr\'e9dire puisque cela d\'e9pend de chaque personne. \
+\
+Les \'e9motions script\'e9s sont mieux pour des films ou films d\'92animations alors que les \'e9motions spontan\'e9es sont plus adapt\'e9s pour des dialogues et des interactions naturelles avec les utilisateurs.\
+\
+\
+Avec un modele de synth\'e8se de plus en plus performant, un int\'e9r\'eat a \'e9t\'e9 port\'e9 sur le livre audio \'e0 la Blizzard challenge 2016 et 2017. Les livres audios contiennent bcp d\'92int\'e9r\'eat avec le TTS, notamment le fait qu\'92il y ait diff\'e9rentes personnes qui parlent, diff\'e9rents style de langage et d\'e9motions et un signal audio similaire. Avec peu de donn\'e9es d\'92entrainement, les livres audios feront une partie du travail avec un protocole d\'e9fini. \
+\
+P2.2\
+Le TTS se base sur deux m\'e9thodes, la s\'e9lection d\'92unit\'e9 ou un syst\'e8me de param\'e9trage statistique. il faut quoi qu\'92il arrive une base d\'92\'e9motions pour qu\'92un texte soit audible. Selon Shr\'f6der,  le syst\'e8me de param\'e9trage statistique apporte plus de flexibilit\'e9 que la s\'e9lection d\'92unit\'e9s car le lien entre les \'e9motions et le style contenu dans la base de donn\'e9es. L\'92approche la plus simple consiste \'e0 donner des audios en apprentissage et les combiner aux syst\'e8mes d\'e9j\'e0 existants. Cela requiert une quantit\'e9 \'e9norme de BDD de style de langage. Pour r\'e9soudre ce pb, un factorisateur de l\'92expression peut aider. La voix peut \'eatre contr\'f4ler en terme symbolique ce principe est utilis\'e9e dans la construction de modele acoustique de syst\'e8me param\'e9trique.\
+\
+ESS se concentrait sur les sons de fond. Les sons de fond ont une grande influence sur la prosodie d\'92un discours. Cela veut dire qu\'92il faut que les investigations sont plus grandes encore qu\'92au d\'e9part. \
+\
+P2.3\
+\
+l\'92articulation est une propri\'e9t\'e9 d\'92un discours difficile. Il a \'e9t\'e9 montr\'e9 que cela peut \'eatre pertinent lors de la mod\'e9lisation de la prononciation avec des arbres de d\'e9cision ou des r\'e9seaux bay\'e9siens. Beaucoup de param\'e8tres peuvent \'eatre directement perdu \'e0 partir d\'92un simple texte. Plusieurs \'e9tudes ont montr\'e9 que la voix sous forme canonique est plus clair. Il semble n\'e9anmoins que dans un corpus spontan\'e9e il y a un compromis a trouver entre audibilit\'e9 et qualit\'e9 de sons. \
+\
+\
+P3 \
+\
+Les protocoles et mat\'e9riels utilis\'e9s pour les exp\'e9riences. Le travail se fait avec 2 corpus. Un est neutre en \'e9motion et \'91autre contient des expressions du big 6 \'e9motions. \
+\
+P3.1\
+\
+\
+Le framework utilis\'e9e int\'e8gres dans un TTS une g\'e9n\'e9ration de phon\'e8mes canonique \'e0 partir d\'92un synth\'e9tiseur.  Il adapte  les phon\'e8mes canoniques selon la prononciation \'e9motionnelle sp\'e9cifique et pr\'e9dit la nouvelle s\'e9quence de phon\'e8mes \'e9motionnels. \
+\
+\
+P3.2\
+\
+Le but est l\'92adaptation de prononciation pour r\'e9duire l\'92inconsistance entre les s\'e9quences de phon\'e8mes(moment parl\'e9) et les s\'e9quences vis\'e9es \
+\
+\
+La s\'e9quence de d\'e9part est la s\'e9quence canonique et la s\'e9quence vis\'e9e est constitu\'e9e \'e0 partir d\'92un corpus expressif ou neutre. Les phon\'e8mes vis\'e9es peuvent \'eatre partiellement trouv\'e9s et annot\'e9s selon un alphabet phon\'e9tique. les s\'e9quences canoniques issus de texte sont align\'e9s avec les s\'e9quences vis\'e9es. Le probl\'e8me est lorsqu\'92une personne parle de fa\'e7on expressive et spontan\'e9e. C\'92est dans ce cas que l\'92on retrouve des inconsistances.\
+\
+\
+Un modele P2P est la relation entre un une s\'e9quence de d\'e9part et la s\'e9quence vis\'e9e gr\'e2ce \'e0 un corpus de prononciation \'e9motionnelle. Ce mod\'e8le peut pr\'e9dire certains phon\'e8mes expressifs en partant de la forme canonique. \
+\
+Il existe un protocole P2P sp\'e9cialement pour la voix. Ce mod\'e8le peut pr\'e9dire les phon\'e8mes neutres. Il peut aussi pr\'e9dire des phon\'e8mes expressif \'e0 partir de phon\'e8mes neutres adapt\'e9s ( \'e0 la voix ). Ce mod\'e8le de P2P devrait r\'e9duire les inconsistances.\
+\
+\
+4 Adaptation prononciation\
+\
+Je la saute pcq ils se basent sur des corpus a chaque fois donc \'e7a veut surement dire qu\'92ils cr\'e9ent des corpus \'e0 partir d\'92une prononciation et des phon\'e8mes.\
+\
+\
+\
+5 Analysis des prononciations \'e9motionnelles\
+\
+Une investigation a montr\'e9 l\'92existence de prononciation \'e9motionnelle diff\'e8re d\'92une \'e9motion \'e0 l\'92autre. \
+\
+5.1 \
+Les variations de prononciation sont due \'e0 la prononciation et au texte lui m\'eame. Le d\'e9go\'fbt est l\'92\'e9motion qui a la plus grosse diff\'e9rence entre les s\'e9quences vis\'e9es neutres et \'e9motionnels. Cela montre donc que le d\'e9gout affecte le plus la prononciation. Les annotations entre les diff\'e9rents modules accentuent les diff\'e9rences. \
+\
+\
+4 types de confusions de phon\'e8mes a \'e9t\'e9 trouv\'e9s. Par exemple, dans \'ab\'a0il y a\'a0\'bb, le phon\'e8me \'91l\'92 n\'92est pas pris en compte. Enfin, l\'92assimilation est une part importante dans le discours spontan\'e9. Les principales confusions entre la lecture neutre et \'e9motionnelle :\
+\
+Suppression des phon\'e8mes /l/ et /r/.\
+Suppression des /e/\
+Insertion des /e/ dans l\'92\'e9motion d\'92\'e9nervement.\
+Changement entre les phon\'e8mes /g/ et /ch/.\
+\
+Sur 12 documents, le taux de bons mots par rapport au nombre de mots dans les documents; est de 50%. \
+\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs26\fsmilli13333 \cf0 \expnd0\expndtw0\kerning0
+Les phon\'e8mes sont susceptibles d'\'eatre \'e9lid\'e9s lorsque\'a0:\
+\'95 leurs valeurs prosodiques associ\'e9es se situent au milieu de l'\'e9chelle. Ce r\'e9sultat est \'e9galement vrai dans la g\'e9n\'e9ration de prononciation sp\'e9cifique \'e0 la voix ,\
+\'95 ils sont li\'e9s aux adverbes,\
+\'95 ils font partie d'un lemme, d'un radical ou d'un mot qui sont communs. \'c9tonnamment, les fonctionnalit\'e9s de fr\'e9quences de mots n'ont pas \'e9t\'e9 beaucoup s\'e9lectionn\'e9es,\
+\'95 ce sont des phon\'e8mes d'apparition (premiers phon\'e8mes d'une syllabe) ou des parties de syllabes ouvertes situ\'e9es au milieu d'un mot.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+\
+\
+\
+7 conclusion\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}

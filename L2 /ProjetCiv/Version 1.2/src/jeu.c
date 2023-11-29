@@ -26,7 +26,7 @@ int  jeu(int civilization,SDL_Window* window, SDL_Renderer* renderer,int liste_c
 
 
     SDL_Rect passer_tour={LONGUEUR_CASE,0,LONGUEUR_CASE,LARGEUR_CASE};
-    SDL_Surface *image=IMG_Load("./image/bouton_passer_tour.png");
+    SDL_Surface *image=IMG_Load("../image/fond.jpg");
     SDL_AfficherUneImage(renderer,image,texture,passer_tour);
     SDL_Rect rectangle_quit={0,0,LONGUEUR_CASE,LARGEUR_CASE};
     crea_plat(cases);

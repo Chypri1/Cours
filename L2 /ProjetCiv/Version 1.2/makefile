@@ -1,124 +1,61 @@
-#
 # Option compilation
-#
-
- CCOBJ=gcc -c
- CCLNK=gcc
+CCOBJ = gcc -c
+CCLNK = gcc
 
 # Valeurs possibles : yes , no
-DEBUG=yes
+DEBUG = yes
+
 # Valeurs possibles : apple , linux
-ARCH=apple
+ARCH = apple
 
-ifeq ($(DEBUG),yes)
-	 CFLAGS=-Wall -ansi -g -D_DEBUG_
+ifeq ($(DEBUG), yes)
+	CFLAGS = -Wall -ansi -g -D_DEBUG_
 else
-	 CFLAGS=-Wall -ansi
+	CFLAGS = -Wall -ansi
 endif
 
-
-ifeq ($(ARCH),apple)
-
-	ifeq ($(DEBUG),yes)
-	      CFLAGS=-Wall -g -D_DEBUG_ -D_APPLE_
+ifeq ($(ARCH), apple)
+	ifeq ($(DEBUG), yes)
+		CFLAGS += -D_APPLE_
 	else
-	      CFLAGS=-Wall -D_APPLE_
+		CFLAGS += -D_APPLE_
 	endif
 endif
 
-ifeq ($(ARCH),linux)
-	LIBMATH=-lm
-
-	ifeq ($(DEBUG),yes)
-	      CFLAGS=-Wall -ansi -g -D_DEBUG_ -D_LINUX_
-	else
-	      CFLAGS=-Wall -ansi -D_LINUX_
-	endif
+ifeq ($(ARCH), linux)
+	LIBMATH = -lm
+	CFLAGS += -D_LINUX_
 endif
-LIBMATH=-lm
 
+# Options de compilation communes
+CFLAGS += -I include -lSDL2main -lSDL2 -lSDL2_image
 
+# Listes des fichiers source et des cibles
+SRCS = src/admin_SDL.c src/main.c src/menu.c src/plateau.c src/fonction_personnage.c src/jeu.c src/bandeau_action.c src/mouvement_personnage.c
+OBJS = $(patsubst src/%.c,obj/%.o,$(SRCS))
+TEST_SRCS = src/tests/test_click.c src/tests/test_plateau.c src/tests/test_jeu.c
+TEST_OBJS = $(patsubst src/tests/%.c,obj/%.o,$(TEST_SRCS))
 
+# Commandes
+.PHONY: all clean
 
+all: bin/prog bin/test_click bin/test_plateau
 
-#gcc src/main.c -o bin/main -I include -L lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -mwindows
+bin/prog: $(OBJS)
+	$(CCLNK) $(CFLAGS) $^ -o $@
 
-FLAGS = -I include -lSDL2main -lSDL2 -lSDL2_image 
-#
-#  commande
-#
+bin/test_click: $(OBJS) $(patsubst src/%.c,obj/%.o,$(filter-out src/plateau.c src/fonction_personnage.c src/jeu.c,$(SRCS))) obj/test_click.o
+	$(CCLNK) $(CFLAGS) $^ -o $@
 
-test_click: bin/test_click
+bin/test_plateau: $(OBJS) $(patsubst src/%.c,obj/%.o,$(filter-out src/jeu.c,$(SRCS))) obj/test_plateau.o
+	$(CCLNK) $(CFLAGS) $^ -o $@
 
-test_plateau:	bin/test_plateau
+# Génération des fichiers objets
+obj/%.o: src/%.c
+	$(CCOBJ) $(CFLAGS) $< -o $@
 
-test_jeu:	bin/test_jeu
-
-all: bin/prog
-
-#
-#  executable
-#
-
-bin/prog: obj/main.o obj/admin_SDL.o obj/menu.o obj/plateau.o obj/jeu.o obj/structure_jeu.o obj/bandeau_action.o obj/mouvement_personnage.o
-	$(CCLNK) $(CFLAGS) obj/main.o obj/admin_SDL.o obj/menu.o obj/plateau.o obj/structure_jeu.o obj/jeu.o obj/bandeau_action.o obj/mouvement_personnage.o -o bin/prog $(FLAGS)
-
-bin/test_jeu: obj/test_jeu.o obj/admin_SDL.o obj/menu.o obj/plateau.o obj/jeu.o obj/structure_jeu.o obj/bandeau_action.o obj/mouvement_personnage.o
-	gcc obj/test_jeu.o obj/admin_SDL.o obj/menu.o obj/plateau.o obj/structure_jeu.o obj/jeu.o obj/bandeau_action.o obj/mouvement_personnage.o -o bin/test_jeu $(FLAGS)
-
-bin/test_click: obj/test_click.o obj/admin_SDL.o obj/menu.o obj/plateau.o obj/structure_jeu.o
-	$(CCLNK) $(CFLAGS) obj/test_click.o obj/admin_SDL.o obj/menu.o obj/plateau.o obj/structure_jeu.o -o bin/test_click $(FLAGS)
-
-bin/test_plateau:  obj/admin_SDL.o obj/menu.o obj/plateau.o obj/test_plateau.o obj/structure_jeu.o
-	$(CCLNK) $(CFLAGS) obj/admin_SDL.o obj/menu.o obj/plateau.o obj/test_plateau.o obj/structure_jeu.o -o bin/test_plateau $(FLAGS)
-
-bin/texte: obj/texte.o
-	gcc obj/texte.o -o bin/texte $(FLAGS)
-#
-#objets
-#
-
-obj/admin_SDL.o: src/admin_SDL.c src/headers/admin_SDL.h src/headers/menu.h src/headers/plateau.h
-	$(CCOBJ) $(CFLAGS) src/admin_SDL.c -o obj/admin_SDL.o $(FLAGS)
-
-obj/main.o: src/main.c src/headers/admin_SDL.h src/headers/menu.h src/headers/plateau.h src/headers/jeu.h
-	$(CCOBJ) $(CFLAGS) src/main.c -o obj/main.o $(FLAGS)
-
-obj/menu.o: src/menu.c src/headers/admin_SDL.h src/headers/menu.h src/headers/plateau.h
-	$(CCOBJ) $(CFLAGS) src/menu.c -o obj/menu.o $(FLAGS)
-
-obj/plateau.o: src/plateau.c src/headers/admin_SDL.h src/headers/menu.h src/headers/plateau.h
-	$(CCOBJ) $(CFLAGS) src/plateau.c -o obj/plateau.o $(FLAGS)
-
-obj/structure_jeu.o: src/fonction_personnage.c src/headers/admin_SDL.h src/headers/menu.h src/headers/plateau.h src/headers/structure_jeu.h
-	$(CCOBJ) $(CFLAGS) src/fonction_personnage.c -o obj/structure_jeu.o $(FLAGS)
-
-obj/jeu.o: src/jeu.c src/headers/admin_SDL.h src/headers/menu.h src/headers/plateau.h src/headers/structure_jeu.h src/headers/bandeau_action.h src/headers/mouvement_personnage.h
-	$(CCOBJ) $(CFLAGS) src/jeu.c -o obj/jeu.o $(FLAGS)
-
-obj/texte.o: src/texte.c
-	gcc src/texte.c -c -o obj/texte.o $(FLAGS)
-
-obj/bandeau_action.o: src/bandeau_action.c src/headers/plateau.h src/headers/structure_jeu.h src/headers/jeu.h src/headers/mouvement_personnage.h
-	$(CCOBJ) $(CFLAGS) src/bandeau_action.c -o obj/bandeau_action.o $(FLAGS)
-
-obj/mouvement_personnage.o: src/mouvement_personnage.c src/headers/plateau.h src/headers/structure_jeu.h
-	$(CCOBJ) $(CFLAGS) src/mouvement_personnage.c -o obj/mouvement_personnage.o $(FLAGS)
-
-#
-#  tests
-#
-obj/test_click.o: src/tests/test_click.c src/headers/admin_SDL.h src/headers/menu.h src/headers/plateau.h src/headers/structure_jeu.h
-	$(CCOBJ) $(CFLAGS) src/tests/test_click.c -o obj/test_click.o $(FLAGS)
-
-obj/test_plateau.o: src/tests/test_plateau.c src/headers/admin_SDL.h src/headers/menu.h src/headers/plateau.h obj/structure_jeu.o
-	$(CCOBJ) $(CFLAGS) src/tests/test_plateau.c -o obj/test_plateau.o $(FLAGS)
-
-obj/test_jeu.o: src/tests/test_jeu.c src/headers/admin_SDL.h src/headers/menu.h src/headers/plateau.h src/headers/structure_jeu.h src/headers/jeu.h
-	gcc src/tests/test_jeu.c -c -o obj/test_jeu.o $(FLAGS)
+obj/tests/%.o: src/tests/%.c
+	$(CCOBJ) $(CFLAGS) $< -o $@
 
 clean:
-	rm obj/*.o
-	rm bin/prog
-	rm bin/test_click
-	rm bin/test_plateau
+	rm -rf obj/*.o bin/prog bin/test_click bin/test_plateau

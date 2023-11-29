@@ -1,0 +1,18 @@
+
+
+Distance Levenshtein
+
+Si les lettres sont les memes alors on prend le  nombre en diagonal en haut a gauche 
+Si les nombres ne sont pas les memes, le minimum entre a gauche, en haut a gauche et en haut est a prendre et il faut y ajouter 1.
+Exemple:
+
+
+    k i t t e n
+  0 1 2 3 4 5 6  
+S 1 1 2 3 4 5 6
+i 2 2 1 2 3 4 5
+t 3 3 2 1 1 2 3
+t 4 4 3 2 1 2 3
+i 5 5 4 3 2 2 3
+n 6 6 5 4 3 3 2
+g 7 7 6 5 4 4 3

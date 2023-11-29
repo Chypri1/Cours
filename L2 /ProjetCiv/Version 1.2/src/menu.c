@@ -185,6 +185,9 @@ SDL_Texture* trajan_texture = NULL;
 SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 SDL_RenderFillRect(renderer, &rect_trajan);
 trajan_image = IMG_Load("./image/trajan.png");
+if (trajan_image == NULL) {
+    printf("image trajan null");
+}
 trajan_texture = SDL_CreateTextureFromSurface(renderer, trajan_image);
 SDL_FreeSurface(trajan_image);
 SDL_RenderCopy(renderer, trajan_texture, NULL, &rect_trajan);
@@ -196,6 +199,10 @@ SDL_Texture* pierre_texture = NULL;
 SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 SDL_RenderFillRect(renderer, &rect_pierre);
 pierre_image = IMG_Load("./image/pierre.png");
+if (pierre_image == NULL) {
+    printf("image pierre null");
+}
+
 pierre_texture = SDL_CreateTextureFromSurface(renderer, pierre_image);
 SDL_FreeSurface(pierre_image);
 SDL_RenderCopy(renderer, pierre_texture, NULL, &rect_pierre);
@@ -206,6 +213,9 @@ SDL_Texture* barberousse_texture = NULL;
 SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 SDL_RenderFillRect(renderer, &rect_Barberousse);
 barberousse_image = IMG_Load("./image/allemagne.png");
+if (barberousse_image == NULL) {
+    printf("image barberousse null");
+}
 barberousse_texture = SDL_CreateTextureFromSurface(renderer, barberousse_image);
 SDL_FreeSurface(barberousse_image);
 SDL_RenderCopy(renderer, barberousse_texture, NULL, &rect_Barberousse);

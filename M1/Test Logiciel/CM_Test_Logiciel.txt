@@ -1,0 +1,37 @@
+
+Laurent PETITET 
+
+Laurent.petitet@soprasteria.com
+
+
+Répondre aux besoins :
+- besoin 
+-se mettre à sa place 
+-prix
+
+
+
+Un produit défini -> cahier des charges
+
+Délai imparti 
+Equipe 
+Budget 
+Planification 
+
+
+Project Manager :
+
+Communication managment -> communication interne 
+Procurment management -> gestion des fournisseurs 
+Scope management -> périmètre du projet 
+Risk management -> gestions risques 
+Time management -> gestion planning 
+Cost management -> Budget/ rentabilité 
+Quality management -> assurance & contrôle qualité 
+RH management -> équin projet/ressource/formation
+
+
+
+ISTQB -> Organisme de certification en test logiciel 
+
+

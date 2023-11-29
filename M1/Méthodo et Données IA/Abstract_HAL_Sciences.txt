@@ -1,0 +1,48 @@
+Définition Prosodie : Durée, mélodie et rythme des sons
+
+
+
+
+
+Le discours synthesis consiste à la conversion d'un texte en discours par un processus qui se nomme "text-to-speech" ou "texte vers discours".
+Le TTS va d'un style neutre et de type machine vers un discours avec des variations d'émotions.
+Cela contribue grandement aux interactions hommes-machine, ainsi qu'à l'éducation et au divertissement. 
+Le TTS a une importance crucial non-seulement pour l'intelegibilité mais aussi pour la transmission d'émotions.
+
+
+L'article se porte sur le fait de prédire les prononciations émotionnelles.
+Pour cela, le système de discours emotionel necessite 2 choses:
+la premiere est la détection d'effet dans le texte lui-meme. 
+le seconde est la generation d'emotion qui suit le message voulu. 
+Le second probleme est celui qui est le plus dur à detecter.
+
+L'un des plus gros challenges du TTS est de trouver un équilibre entre les états affectifs en entrée et la réalsiation des intonations de langages dans le discours en sortie. 
+L'intonation est le signal le plus important dans la perception des aspects d'un discours comme le montre beaucoup de travaux sur la detection d'emotions. 
+
+La structure de phrase definit une séquence de phonèmes qui amène à une suite de signal(position des silences, pause de phrase).
+
+L'étude de la pronociation des émotions vient en complément de l'étude de la prosodie émotionel.
+Malheureusement, les recehrches se concentrent en génréral sur varations des suprasegmentations prosodiques uniquement.
+Il n'y a aucun articles scientifiques connues sur l'influence entre la prononciation et les émotions d'un discours.
+
+l'aticle soulève deux problems avec les systèmes de prononciations TTS.
+
+Le premier est la génération automatique de pronociations emotionels a aprtir d'un texte.
+
+Les séquences de phonemes influencent grandement les parametres prosodiques. C'est un challenge qui n'a pas encore été abordé par ESS.
+Dans cet article, les séquence de graphemes sont automatiquement convertis en séquence de phonemes sous forme canonique en utilisant un phonétiseur.
+
+Au départ, l'adaptation d'un système au départ pour augmenter la qualité de perception du TTS,
+ce systeme vient à être améliorer avec les prononciations neutres sous forme canonique pour etre adapter a un corpus entier. 
+
+
+le second probleme que cet article dresse est la caracterisation des prononciations emotionelles.
+
+Ils ont étudiés les variations de prononciations selon différents états émotionels, d'abord sur des vrais speech puis sur des speech générés.
+
+
+
+
+
+
+

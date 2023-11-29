@@ -1,0 +1,135 @@
+Régression logistique
+
+^
+|
+|
+|
+|
+|__________>
+
+
+
+On va cherche à modéliser P(Yi = X)  -> probabilismes de kyste à opérer
+
+Hypothèse de modélisation:
+
+Utiliser la fonction sigmoïde pour modéliser cette proba, et donc modéliser le lien entre Y et X
+
+f(Z) = 1/ 1+e^(-z) 
+
+f : R -> ]0,1[
+
+
+
+Graphe : -> 
+
+Fonction qui passe en 0,5 quand X = 0
+
+Comment je peux utiliser mes sigmoïdes pour modéliser une proba et donc mes données ?
+
+
+-> introduire des paramètres 
+
+h(x) = teta0 + teta1x
+
+g(x)= f(h(x)) = 1/ 1+e^(-h(x))
+
+= 1/1+e^(teta0 +teta1x)
+
+prédiction
+Si g(xi)> 0.5 -> Yi=1
+Si g(xi) < 0.5 -> Yi=0
+
+teta0 déplace ma sigmoïde sur l'axe des abscisses
+
+teta1 change l'inflexion de am sigmoïde
+
+X = {x1,...,xn} xi appartient R^n
+
+xi = (xi1,xi2,..., xip) avec p le nombre de dimension
+
+h(xi) = teta0 + teta1xi1 + teta2xi2 + ... + tetapxip
+
+Modèlisation probabilité 
+
+Maximum de vraisemblance 
+
+I (multiplication) pour Yi=1  PO(Yi+1|xi), I (multiplication) pour Yi=0 Pteta(Yi=O|xi)  <=>  I (multiplication) pour Yi=1  Pteta(Yi+1|xi), I (multiplication) pour Yi=0 (1-Pteta(Yi+1|xi))
+
+On remplace la roba par la sigmoïde g(xi) car le sigmoïde est la probabilismes qu'on veut:
+
+I (multiplication) pour Yi=1 g(xi),  I (multiplication) pour Yi=0 (1-g(xi))
+
+
+Pour maximiser, on fait la somme en utilisant le log:
+
+I (somme) pour Yi=1 log(g(xi)) + I (somme) pour Yi=0 log(1-g(xi)) <=> n (somme) i Yi log(g(xi)) + (1-Yi) log(1-g(xi)) ou n correspond aux nombre de données
+
+Maximiser pour chercher les teta de fonction g(xi)
+
+Fonction de cout:
+
+J(teta) = -1/n(n (somme) i Yi log(g(xi)) + (1-Yi) log(1-g(xi))
+
+Argmin teta J(teta) 
+
+Pour optimiser notre fonction J(teta) :
+Pour chercher les teta optimaux, on utilise la descente de gradient 
+
+Téta = (téta ,x) xi appartient R^p
+
+Alpha = (teta1,teta2,...,tétap)
+
+ d log(g(x)) /( dAlpha )=  (d/dAlpha) (log(1/ 1+e^(-h(x)))
+<=> d /dAlpha log(1) -log(1+e^(-h(x)) = d log(1+e^(-h(x)) /dAlpha
+
+Dérivé :
+
+log((u))' =u'/u  (e^u)' =u'e^u
+
+
+= d e^(-h(x)) /dAplha = [d e^(-teta0 -Alpha x) ] / dAlpha = -x e^(-teta0 -Alpha x)
+
+= Alpha * xi =teta1 xi1 + teta2 xi2 + ... + tétaP xiP
+
+
+
+
+ =x e^(-h(x)) / 1+e^(-h(x)
+
+
+ = x (  1+e^(-h(x)/ 1+e^(-h(x) - 1 / 1+e^(-h(x) )
+
+ = x(1- g(x))
+
+
+
+d J(teta0, Alpha) / dAlpha = 1/n (somme) i=1 xi(g(xi) - Yi) 
+
+
+Interprétation des résultats cote (xi) = p(Yi = 1| xi) /  (1- p(Yi = 1| xi)) = g(xi) / 1-g(xi)
+
+Exemple:
+
+p(Yi=1|xi) = 0.9
+1 - p(Yi=1|xi) = 0.1
+
+Cote = 0.9/0.1 = 9
+
+xi a 9 fois plus de chance d'appartenir à la classe 1 qu'à la classe 0
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
