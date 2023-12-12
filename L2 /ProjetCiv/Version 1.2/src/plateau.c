@@ -55,15 +55,14 @@ void clean_ressources(SDL_Window *w,SDL_Renderer *r,SDL_Texture *t)
 */
 
 
-
-void SDL_AfficherUneImage(SDL_Renderer *renderer,SDL_Surface *image,SDL_Texture *texture,SDL_Rect rectangle){
+void SDL_AfficherUneImage(SDL_Renderer *renderer,char *image1,SDL_Texture *texture,SDL_Rect rectangle){
+    SDL_Surface *image = IMG_Load(image1);
     if(image ==NULL){
         clean_ressources(NULL,renderer,texture);
         SDL_ExitWithError("Impossible de charger l'image");
     }
-    texture= SDL_CreateTextureFromSurface(renderer,image);
-
-    SDL_FreeSurface(image);
+    SDL_Surface *convertedSurface = SDL_ConvertSurfaceFormat(image, SDL_PIXELFORMAT_RGBA8888, 0);
+    texture= SDL_CreateTextureFromSurface(renderer,convertedSurface);
      if(texture ==NULL){
         clean_ressources(NULL,renderer,texture);
         SDL_ExitWithError("Impossible de creer la texture");
@@ -72,7 +71,8 @@ void SDL_AfficherUneImage(SDL_Renderer *renderer,SDL_Surface *image,SDL_Texture 
         clean_ressources(NULL,renderer,texture);
         SDL_ExitWithError("Impossible d'afficher la texture");
     }
-    SDL_RenderPresent(renderer);
+    clean_ressources(NULL,NULL,texture);
+    SDL_FreeSurface(image);
 }
 
 /**
@@ -180,9 +180,9 @@ return(0);
 /* permet de charger le plateau*/
 
 void afficher_plateau(SDL_Window *window,SDL_Renderer * renderer,SDL_Rect cases[LONGUEUR_CASE][LARGEUR_CASE],int biome[N][N]){
-  SDL_Surface *image=NULL;
+  char * image;
   SDL_Texture *texture=NULL;
-  SDL_Texture *imagefond=NULL;
+  SDL_Texture *texture1=NULL;
   FILE * map;
   map = fopen( "./src/map.txt", "r" );
 
@@ -199,26 +199,21 @@ SDL_ExitWithError("Le renderer n'a pas pu être créé");
 
 
   /*Création de l'image de fond*/
-SDL_Rect fond={0,0,Fenetre_height,Fenetre_width};
-image= IMG_Load("./image/check.png");
-SDL_AfficherUneImage(renderer,image,imagefond,fond);
-
-
+SDL_Rect fond = {0, 0, Fenetre_height, Fenetre_width};
+image = "./image/fond.jpg";
+SDL_AfficherUneImage(renderer,image,texture,fond);
 
 
   /*Création de l'image du bandeau informations*/
 SDL_Rect bandeau_info={0,0,Fenetre_height,LARGEUR_CASE};
-image= IMG_Load("./image/fond_plateau1.png");
-SDL_AfficherUneImage(renderer,image,texture,bandeau_info);
-
-
+image = "./image/fond.jpg";
+SDL_AfficherUneImage(renderer,image,texture, bandeau_info);
 
 
   /* bouton quitter sur le plateau */
 SDL_Rect quit={0,0,LONGUEUR_CASE,LARGEUR_CASE};
-image= IMG_Load("./image/quit.png");
+image= "./image/quit.png";
 SDL_AfficherUneImage(renderer,image,texture,quit);
-
 
 
 int adresse=0;
@@ -227,73 +222,26 @@ int adresse=0;
       fscanf(map, "%i",&adresse);
       switch(adresse){
         case 1:
-          image= IMG_Load("./image/montagne.png");
+          image= "./image/eau.png";
           SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
         break;
 
         case 2:
-        image= IMG_Load("./image/eau.png");
-          SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
-        break;
-
-
-        case 30:
-        image= IMG_Load("./image/colon.png");
-          SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
-        break;
-
-        case 35:
-        image= IMG_Load("./image/batisseur.png");
-          SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
-        break;
-
-        case 40:
-        image= IMG_Load("./image/guerrier.png");
-          SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
-        break;
-
-        case 45:
-        image= IMG_Load("./image/archer.png");
-          SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
-        break;
-
-        case 50:
-        image= IMG_Load("./image/ville1.png");
-          SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
-        break;
-
-        case 55:
-        image= IMG_Load("./image/ville2.png");
-          SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
-        break;
-
-        case 60:
-        image= IMG_Load("./image/ville3.png");
-          SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
-        break;
-
-        case 65:
-        image= IMG_Load("./image/ferme.png");
-          SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
-        break;
-
-        case 70:
-        image= IMG_Load("./image/biblio.png");
+        image= "./image/montagne.png";
           SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
         break;
 
         default:
-          image= IMG_Load("./image/herbe.png");
+          image= "./image/herbe.png";
           SDL_AfficherUneImage(renderer,image,texture,cases[i][j]);
         break;
       }
-
-
-      adresse++;
     }
+    
   }
 
+  SDL_RenderPresent(renderer);
+
   clean_ressources(NULL,NULL,texture);
-  clean_ressources(NULL,NULL,imagefond);
   fclose(map);
 }

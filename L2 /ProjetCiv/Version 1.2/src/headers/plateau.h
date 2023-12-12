@@ -9,7 +9,7 @@
 #define LARGEUR_CASE 35
 
 void clean_ressources(SDL_Window *w,SDL_Renderer *r,SDL_Texture *t);
-void SDL_AfficherUneImage(SDL_Renderer *renderer,SDL_Surface *image,SDL_Texture *texture,SDL_Rect rectangle);
+void SDL_AfficherUneImage(SDL_Renderer *renderer,char *image,SDL_Texture *texture,SDL_Rect rectangle);
 
 
 int crea_plat(SDL_Rect cases[LONGUEUR_CASE][LARGEUR_CASE]);

@@ -41,37 +41,30 @@ int main(int argc, char* argv[])
     int height = 1000;
     int width = 700;
     
-    SDL_Rect fenetre_surface;
+     SDL_Rect fenetre_surface;
     fenetre_surface.x = 0;
     fenetre_surface.y = 0;
-    fenetre_surface.w = height;
-    fenetre_surface.h = width;
+    fenetre_surface.w = Fenetre_height;
+    fenetre_surface.h = Fenetre_width;
 
-    // SDL_Rect rectangle_restart;
-    // rectangle_restart.x = (height / 2 / 4);
-    // rectangle_restart.y = (width / 3 * 2);
-    // rectangle_restart.w = 100;
-    // rectangle_restart.h = 50;
+    SDL_Rect rectangle_restart;
+    rectangle_restart.x = 0;
+    rectangle_restart.y = 0;
+    rectangle_restart.w = 100;
+    rectangle_restart.h = 50;
 
 
     SDL_Rect rectangle_continuer;
-    rectangle_continuer.x = (height / 2 - LARGEUR_CASE);
-    rectangle_continuer.y = (width / 3 * 2);
+    rectangle_continuer.x = (Fenetre_height / 4);
+    rectangle_continuer.y = (Fenetre_width / 3 * 2);
     rectangle_continuer.w = 100;
     rectangle_continuer.h = 50;
 
     SDL_Rect rectangle_quit;
-    rectangle_quit.x = (height / 2 * 1.5);
-    rectangle_quit.y = (width / 3 * 2);
+    rectangle_quit.x = (Fenetre_height / 2 * 1.5);
+    rectangle_quit.y = (Fenetre_width / 3 * 2);
     rectangle_quit.w = 100;
     rectangle_quit.h = 50;
-
-
-     SDL_Rect rectangle_restart;
-    rectangle_restart.x = (0);
-    rectangle_restart.y = (0);
-    rectangle_restart.w = width;
-    rectangle_restart.h = height;
 
     SDL_Rect rect_trajan;
     rect_trajan.x = 137.5;
@@ -105,17 +98,17 @@ int main(int argc, char* argv[])
     if (window == NULL)
         SDL_ExitWithError("Impossible de creer la fen�tre");
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, -1, 2);
 
     if (renderer == NULL) {
         SDL_DestroyWindow(window);
         SDL_ExitWithError("Impossible de creer le rendu");
     }
 
-    menu(window, renderer, rectangle_restart, rectangle_continuer, rectangle_quit, fenetre_surface);
-    SDL_RenderPresent(renderer);
 
     SDL_bool program_launched = SDL_TRUE;
+    SDL_Event event;
+    menu(window, renderer);
 
     while (program_launched) {
         SDL_Event event;
@@ -131,46 +124,35 @@ int main(int argc, char* argv[])
             case SDL_MOUSEBUTTONDOWN: /* Relâchement d'un clique*/
                  x = event.button.x;  /*récupération de la position de la souris*/
                  y = event.button.y;
-                // if (x > rectangle_continuer.x && x<(rectangle_continuer.x + rectangle_continuer.w) && y>rectangle_continuer.y && y < (rectangle_continuer.y + rectangle_continuer.h)&& program_launched)
-                // {
-                //    SDL_RenderClear(renderer);
+                if (x > rectangle_continuer.x && x<(rectangle_continuer.x + rectangle_continuer.w) && y>rectangle_continuer.y && y < (rectangle_continuer.y + rectangle_continuer.h)&& program_launched)
+                {
+                   SDL_RenderClear(renderer);
 
-                //     /*on met à null les coordonnées des boutons restart et quitter*/
+                    /*on met à null les coordonnées des boutons restart et quitter*/
 
-                //     rectangle_restart.x = 0;
-                //     rectangle_restart.y = 0;
-                //     rectangle_restart.w = 0;
-                //     rectangle_restart.h = 0;
+                    rectangle_restart.x = 0;
+                    rectangle_restart.y = 0;
+                    rectangle_restart.w = 0;
+                    rectangle_restart.h = 0;
 
-                //     rectangle_quit.x = 0;
-                //     rectangle_quit.y = 0;
-                //     rectangle_quit.w = 100;
-                //     rectangle_quit.h = 100;
+                    rectangle_quit.x = 0;
+                    rectangle_quit.y = 0;
+                    rectangle_quit.w = 100;
+                    rectangle_quit.h = 100;
 
-                //     rectangle_continuer.x = 0;
-                //     rectangle_continuer.y = 0;
-                //     rectangle_continuer.w = 0;
-                //     rectangle_continuer.h = 0;
+                    rectangle_continuer.x = 0;
+                    rectangle_continuer.y = 0;
+                    rectangle_continuer.w = 0;
+                    rectangle_continuer.h = 0;
+                    crea_plat(cases);
 
+                    afficher_plateau(window,renderer,cases,liste_cases);
+                    //program_launched=jeu(civilization,window, renderer, liste_cases);
+                    break; /*attend qu'on ferme la fenetre*/
 
-
-                //         if(SDL_Init(SDL_INIT_VIDEO) != 0)   /*   Lancement SDL   */
-                //             SDL_ExitWithError("Initialisation SDL");
-                //         /*     Création de la fenêtre     */
-                //             crea_plat(cases);
-                //         /*       Création du rendu de plateau     */
-
-                //         afficher_plateau(window,renderer,cases,liste_cases);
-                //         printf("c'est ka pb ");
-                //         SDL_RenderPresent(renderer);
-
-                //         program_launched=jeu(civilization,window, renderer, liste_cases);
-                //         printf("c'est ka pb 2");
-                //         break; /*attend qu'on ferme la fenetre*/
-
-                // }
-                // else 
-                if ((x > rectangle_restart.x && x<(rectangle_restart.x + rectangle_restart.w) && y>rectangle_restart.y && y < (rectangle_restart.y + rectangle_restart.h)) && program_launched)
+                }
+                else 
+                if ((x > rectangle_restart.x && x<(rectangle_restart.x + rectangle_restart.w)) && (y>rectangle_restart.y && y < (rectangle_restart.y + rectangle_restart.h)) && program_launched)
                 {
                     SDL_RenderClear(renderer);
                     rectangle_restart.x = 0;
@@ -188,15 +170,7 @@ int main(int argc, char* argv[])
                     rectangle_continuer.w = 0;
                     rectangle_continuer.h = 0;
 
-                    if(SDL_Init(SDL_INIT_VIDEO) != 0)   /*   Lancement SDL   */
-                            SDL_ExitWithError("Initialisation SDL");
-
-                    SDL_Surface* fond = IMG_Load("../image/fond_plateau1.png");
-                    SDL_Texture* fond_Texture = SDL_CreateTextureFromSurface(renderer, fond);
-                    SDL_Rect fenetre_surface = { 0,0,height , width };
-                    printf("ca va la 2");
-                    SDL_RenderPresent(renderer);
-                    civilization=menu_select(window, renderer, rect_trajan, rect_pierre, rect_Barberousse); /* choix du personnage */
+                    civilization=menu_select(window, renderer); /* choix du personnage */
                     SDL_RenderPresent(renderer);
 
                     rectangle_quit.x = 0;
@@ -205,11 +179,10 @@ int main(int argc, char* argv[])
                     rectangle_quit.h = 100;
 
                     crea_plat(cases);
-                    affectation_cases(liste_cases,cases);
+                    // affectation_cases(liste_cases,cases);
                     afficher_plateau(window,renderer,cases,liste_cases);
-                    SDL_RenderPresent(renderer);
 
-                     program_launched=jeu(civilization,window, renderer, liste_cases);
+                    //  program_launched=jeu(civilization,window, renderer, liste_cases); // TODO : revoir ce truc
 
                 }
                 else if (x > rectangle_quit.x && x<(rectangle_quit.x + rectangle_quit.w) && y>rectangle_quit.y && y < (rectangle_quit.y + rectangle_quit.h))

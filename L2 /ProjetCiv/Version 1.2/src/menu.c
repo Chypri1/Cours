@@ -29,117 +29,52 @@
 */
 
 
-void menu(SDL_Window* window, SDL_Renderer* renderer, SDL_Rect rectangle_restart, SDL_Rect rectangle_continuer, SDL_Rect rectangle_quit, SDL_Rect fenetre_surface) {
+void menu(SDL_Window* window, SDL_Renderer* renderer) {
 
-    SDL_Surface* bouton_restart = NULL;
-    SDL_Texture* bouton_restart_texture = NULL;
+    char* bouton_restart = NULL;
+    SDL_Texture* texture = NULL;
 
-    SDL_Surface* bouton_continuer = NULL;
-    SDL_Texture* bouton_continuer_texture = NULL;
+    char* bouton_continuer = NULL;
 
-    SDL_Texture* bouton_quit_texture = NULL;
-    SDL_Surface* bouton_quit = NULL;
+    SDL_Rect fenetre_surface;
+    fenetre_surface.x = 0;
+    fenetre_surface.y = 0;
+    fenetre_surface.w = Fenetre_height;
+    fenetre_surface.h = Fenetre_width;
 
-    SDL_RenderFillRect(renderer, &fenetre_surface);
-
-    SDL_Surface* fond = IMG_Load("./image/ferme.jpg");
-    SDL_Texture* fond_Texture = SDL_CreateTextureFromSurface(renderer, fond);
-    SDL_FreeSurface(fond);
-
-    SDL_RenderCopy(renderer, fond_Texture, NULL, &fenetre_surface); /* Copie du sprite grâce au SDL_Renderer*/
-
-    //SDL_DestroyTexture(fond_Texture);
-    SDL_RenderFillRect(renderer, &rectangle_restart);
-    SDL_RenderFillRect(renderer, &rectangle_quit);
-    SDL_RenderFillRect(renderer, &rectangle_continuer);
+    SDL_Rect rectangle_restart;
+    rectangle_restart.x = 0;
+    rectangle_restart.y = 0;
+    rectangle_restart.w = 100;
+    rectangle_restart.h = 50;
 
 
-    bouton_restart = IMG_Load("./image/restart.png"); /*chargement de l'image du bouton restart*/
+    SDL_Rect rectangle_continuer;
+    rectangle_continuer.x = (Fenetre_height / 2 / 2);
+    rectangle_continuer.y = (Fenetre_width / 3 * 2);
+    rectangle_continuer.w = 100;
+    rectangle_continuer.h = 50;
 
-    if (bouton_restart == NULL) {
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de charger l'image restart");
-    }
+    SDL_Rect rectangle_quit;
+    rectangle_quit.x = (Fenetre_height / 2 * 1.5);
+    rectangle_quit.y = (Fenetre_width / 3 * 2);
+    rectangle_quit.w = 100;
+    rectangle_quit.h = 50;
 
-    bouton_restart_texture = SDL_CreateTextureFromSurface(renderer, bouton_restart);
-    SDL_FreeSurface(bouton_restart);
+    char* bouton_quit = NULL;
 
-    if (bouton_restart_texture == NULL) {
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de creer le bonton restart");
-    }
+    char* fond = "./image/fond.jpg";
+    SDL_AfficherUneImage(renderer,fond,texture,fenetre_surface);
+   
+    bouton_restart ="./image/restart.png"; /*chargement de l'image du bouton restart*/
+    SDL_AfficherUneImage(renderer,bouton_restart,texture, rectangle_restart);
 
-    if (SDL_RenderCopy(renderer, bouton_restart_texture, NULL, &rectangle_restart) != 0)
-    {
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible d'afficher la texture");
-    }
+    bouton_continuer = "./image/continuer.png"; /*chargement de l'image du bouton continuer*/
+    SDL_AfficherUneImage(renderer,bouton_continuer,texture, rectangle_continuer);
 
-    SDL_RenderPresent(renderer);
+    bouton_quit = "./image/quit.png";       /*chargement de l'image du bouton quitter*/
+    SDL_AfficherUneImage(renderer,bouton_quit,texture, rectangle_quit);
 
-
-
-
-
-    bouton_continuer = IMG_Load("./image/continuer.png"); /*chargement de l'image du bouton continuer*/
-
-    if (bouton_continuer == NULL) {
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de charger l'image continuer");
-    }
-
-    bouton_continuer_texture = SDL_CreateTextureFromSurface(renderer, bouton_continuer);
-    SDL_FreeSurface(bouton_continuer);
-
-    if (bouton_continuer_texture == NULL) {
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de creer le bonton continuer");
-    }
-
-    if (SDL_RenderCopy(renderer, bouton_continuer_texture, NULL, &rectangle_continuer) != 0)
-    {
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible d'afficher la texture");
-    }
-
-    SDL_RenderPresent(renderer);
-
-
-
-
-
-
-
-
-    bouton_quit = IMG_Load("./image/quit.png");       /*chargement de l'image du bouton quitter*/
-
-    if (bouton_quit == NULL) {
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de charger l'image quitter");
-    }
-
-    bouton_quit_texture = SDL_CreateTextureFromSurface(renderer, bouton_quit);
-    SDL_FreeSurface(bouton_quit);
-
-    if (bouton_quit_texture == NULL) {
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de creer le bonton quitter");
-    }
-
-    if (SDL_RenderCopy(renderer, bouton_quit_texture, NULL, &rectangle_quit) != 0)
-    {
-        SDL_DestroyRenderer(renderer);
-        SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible d'afficher la texture");
-    }
     SDL_RenderPresent(renderer);
 }
 
@@ -157,7 +92,7 @@ void menu(SDL_Window* window, SDL_Renderer* renderer, SDL_Rect rectangle_restart
 
 
 
-int menu_select(SDL_Window* window, SDL_Renderer* renderer, SDL_Rect rect_trajan,SDL_Rect rect_pierre, SDL_Rect rect_Barberousse)
+int menu_select(SDL_Window* window, SDL_Renderer* renderer)
 { /* faire la liste des civilisations disponibles + leur descrition et retourner la coordonnée du click souris pour sélectionner la civ*/
 SDL_Event event;
 
@@ -180,46 +115,21 @@ rectangle_continuer_barberousse.y = 50;
 rectangle_continuer_barberousse.w = 150;
 rectangle_continuer_barberousse.h = 150;
 
-SDL_Surface* trajan_image = NULL;
-SDL_Texture* trajan_texture = NULL;
-SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-SDL_RenderFillRect(renderer, &rect_trajan);
-trajan_image = IMG_Load("./image/trajan.png");
-if (trajan_image == NULL) {
-    printf("image trajan null");
-}
-trajan_texture = SDL_CreateTextureFromSurface(renderer, trajan_image);
-SDL_FreeSurface(trajan_image);
-SDL_RenderCopy(renderer, trajan_texture, NULL, &rect_trajan);
-SDL_RenderPresent(renderer);
+SDL_Texture* texture = NULL;
 
 
-SDL_Surface* pierre_image = NULL;
-SDL_Texture* pierre_texture = NULL;
-SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-SDL_RenderFillRect(renderer, &rect_pierre);
-pierre_image = IMG_Load("./image/pierre.png");
-if (pierre_image == NULL) {
-    printf("image pierre null");
-}
+char *trajan_image = "./image/trajan.png";
+SDL_AfficherUneImage(renderer,trajan_image,texture, rectangle_continuer_trajan);
 
-pierre_texture = SDL_CreateTextureFromSurface(renderer, pierre_image);
-SDL_FreeSurface(pierre_image);
-SDL_RenderCopy(renderer, pierre_texture, NULL, &rect_pierre);
-SDL_RenderPresent(renderer);
 
-SDL_Surface* barberousse_image = NULL;
-SDL_Texture* barberousse_texture = NULL;
-SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-SDL_RenderFillRect(renderer, &rect_Barberousse);
-barberousse_image = IMG_Load("./image/allemagne.png");
-if (barberousse_image == NULL) {
-    printf("image barberousse null");
-}
-barberousse_texture = SDL_CreateTextureFromSurface(renderer, barberousse_image);
-SDL_FreeSurface(barberousse_image);
-SDL_RenderCopy(renderer, barberousse_texture, NULL, &rect_Barberousse);
-SDL_RenderPresent(renderer);
+
+char *pierre_image = "./image/pierre.png";
+SDL_AfficherUneImage(renderer,pierre_image,texture, rectangle_continuer_pierre);
+
+
+char *barberousse_image = "./image/allemagne.png";
+SDL_AfficherUneImage(renderer,barberousse_image,texture, rectangle_continuer_barberousse);
+
 
 SDL_bool program_launched = SDL_TRUE;
 int civilisation=0, trouve=0;
@@ -251,5 +161,6 @@ while ((SDL_PollEvent(&event))||(trouve!=1)){
                 break;
         }
     }
+    SDL_RenderPresent(renderer);
     return 0;
 }
