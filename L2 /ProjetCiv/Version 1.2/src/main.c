@@ -33,7 +33,8 @@ int main(int argc, char* argv[])
 {
 
     SDL_Window* window = NULL;
-    SDL_Renderer* renderer = NULL;
+    SDL_Renderer* rendu_menu = NULL;
+    SDL_Renderer* rendu_jeu = NULL;
 
     int liste_cases[N][N];
     SDL_Rect cases[LONGUEUR_CASE][LARGEUR_CASE];
@@ -85,7 +86,7 @@ int main(int argc, char* argv[])
     rect_Barberousse.h = 150;
 
 
-
+    SDL_Texture *texture =NULL;
 
     int x = 0, y = 0;
 
@@ -98,17 +99,18 @@ int main(int argc, char* argv[])
     if (window == NULL)
         SDL_ExitWithError("Impossible de creer la fen�tre");
 
-    renderer = SDL_CreateRenderer(window, -1, 2);
+    rendu_menu = SDL_CreateRenderer(window, -1, 2);
 
-    if (renderer == NULL) {
+    if (rendu_menu == NULL) {
         SDL_DestroyWindow(window);
-        SDL_ExitWithError("Impossible de creer le rendu");
+        SDL_ExitWithError("Impossible de creer le rendu menu");
     }
+    
 
 
     SDL_bool program_launched = SDL_TRUE;
     SDL_Event event;
-    menu(window, renderer);
+    menu(window, rendu_menu);
 
     while (program_launched) {
         SDL_Event event;
@@ -126,7 +128,15 @@ int main(int argc, char* argv[])
                  y = event.button.y;
                 if (x > rectangle_continuer.x && x<(rectangle_continuer.x + rectangle_continuer.w) && y>rectangle_continuer.y && y < (rectangle_continuer.y + rectangle_continuer.h)&& program_launched)
                 {
-                   SDL_RenderClear(renderer);
+                   SDL_RenderClear(rendu_menu);
+
+                   // écran de chargement veuillez patienter 
+
+                    SDL_Rect fond_chargement = {0, 0, Fenetre_height, Fenetre_width};
+                    char* image = "./image/fond_chargement.jpg";
+                    SDL_AfficherUneImage(rendu_menu,image,texture,fond_chargement);
+                    SDL_RenderPresent(rendu_menu);
+
 
                     /*on met à null les coordonnées des boutons restart et quitter*/
 
@@ -144,17 +154,26 @@ int main(int argc, char* argv[])
                     rectangle_continuer.y = 0;
                     rectangle_continuer.w = 0;
                     rectangle_continuer.h = 0;
-                    crea_plat(cases);
+                    
+                    clean_ressources(NULL,rendu_menu,NULL);
+                    rendu_jeu = SDL_CreateRenderer(window, -1, 2);
+                    if (rendu_jeu == NULL) {
+                        SDL_DestroyWindow(window);
+                        SDL_ExitWithError("Impossible de creer le rendu jeu");
+                    }
 
-                    afficher_plateau(window,renderer,cases,liste_cases);
-                    //program_launched=jeu(civilization,window, renderer, liste_cases);
+                    crea_plat(cases);
+                    afficher_plateau(window,rendu_jeu, texture, cases,liste_cases);
+                    SDL_RenderPresent(rendu_jeu); // nécessaure pour afficher le jeu et le plateau 
+                
+                    program_launched=jeu(civilization,window, rendu_jeu, texture, liste_cases);
                     break; /*attend qu'on ferme la fenetre*/
 
                 }
                 else 
                 if ((x > rectangle_restart.x && x<(rectangle_restart.x + rectangle_restart.w)) && (y>rectangle_restart.y && y < (rectangle_restart.y + rectangle_restart.h)) && program_launched)
                 {
-                    SDL_RenderClear(renderer);
+                    SDL_RenderClear(rendu_menu);
                     rectangle_restart.x = 0;
                     rectangle_restart.y = 0;
                     rectangle_restart.w = 0;
@@ -170,19 +189,24 @@ int main(int argc, char* argv[])
                     rectangle_continuer.w = 0;
                     rectangle_continuer.h = 0;
 
-                    civilization=menu_select(window, renderer); /* choix du personnage */
-                    SDL_RenderPresent(renderer);
+                    civilization=menu_select(window, rendu_menu); /* choix du personnage */
+                    SDL_RenderPresent(rendu_menu);
 
                     rectangle_quit.x = 0;
                     rectangle_quit.y = 0;
                     rectangle_quit.w = 100;
                     rectangle_quit.h = 100;
 
-                    crea_plat(cases);
-                    // affectation_cases(liste_cases,cases);
-                    afficher_plateau(window,renderer,cases,liste_cases);
-
-                    //  program_launched=jeu(civilization,window, renderer, liste_cases); // TODO : revoir ce truc
+                    clean_ressources(NULL,rendu_menu,NULL);
+                    rendu_jeu = SDL_CreateRenderer(window, -1, 2);
+                    if (rendu_jeu == NULL) {
+                        SDL_DestroyWindow(window);
+                        SDL_ExitWithError("Impossible de creer le rendu jeu");
+                    }
+                    afficher_plateau(window,rendu_jeu, texture, cases,liste_cases);
+                
+                    program_launched=jeu(civilization,window, rendu_jeu, texture, liste_cases);
+                    break; /*attend qu'on ferme la fenetre*/
 
                 }
                 else if (x > rectangle_quit.x && x<(rectangle_quit.x + rectangle_quit.w) && y>rectangle_quit.y && y < (rectangle_quit.y + rectangle_quit.h))
@@ -197,10 +221,8 @@ int main(int argc, char* argv[])
         }
     }
 
-
-
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
+    clean_ressources(NULL,rendu_jeu,NULL);
+    clean_ressources(window,NULL,NULL);
     SDL_Quit();
 
     return EXIT_SUCCESS;

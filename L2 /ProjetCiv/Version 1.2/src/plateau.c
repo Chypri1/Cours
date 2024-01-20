@@ -25,56 +25,6 @@
 */
 
 
-
-/**
-* \fn void clean_ressources(SDL_Window *w,SDL_Renderer *r,SDL_Texture *t)
-* \param w Récupère la fenêtre déjà initialisé
-* \param r Récupère la rendu déjà initialisé
-* \param t Récupère la texture déjà initialisé
-* \brief Destruction des textures et rendus ainsi que de la fenêtre
-*/
-
-
-void clean_ressources(SDL_Window *w,SDL_Renderer *r,SDL_Texture *t)
-{
-    if(t != NULL)
-        SDL_DestroyTexture(t);
-    if(r != NULL)
-        SDL_DestroyRenderer(r);
-    if(w != NULL)
-        SDL_DestroyWindow(w);
-}
-
-/**
-* \fn SDL_AfficherUneImage(SDL_Renderer *renderer,SDL_Surface *image,SDL_Texture *texture,SDL_Rect rectangle)
-* \param renderer Rendu d'affichage déjà initialisé
-* \param image Récupère l'image déjà initialisé
-* \param texture Récupère la texture déjà initialisé
-* \param rectangle objet de type SDL_Rect déjà initialisé
-* \brief Permet l'affichage d'une image et opère les cas d'erreurs éventuels
-*/
-
-
-void SDL_AfficherUneImage(SDL_Renderer *renderer,char *image1,SDL_Texture *texture,SDL_Rect rectangle){
-    SDL_Surface *image = IMG_Load(image1);
-    if(image ==NULL){
-        clean_ressources(NULL,renderer,texture);
-        SDL_ExitWithError("Impossible de charger l'image");
-    }
-    SDL_Surface *convertedSurface = SDL_ConvertSurfaceFormat(image, SDL_PIXELFORMAT_RGBA8888, 0);
-    texture= SDL_CreateTextureFromSurface(renderer,convertedSurface);
-     if(texture ==NULL){
-        clean_ressources(NULL,renderer,texture);
-        SDL_ExitWithError("Impossible de creer la texture");
-    }
-    if(SDL_RenderCopy(renderer,texture,NULL,&rectangle)!=0){
-        clean_ressources(NULL,renderer,texture);
-        SDL_ExitWithError("Impossible d'afficher la texture");
-    }
-    clean_ressources(NULL,NULL,texture);
-    SDL_FreeSurface(image);
-}
-
 /**
 * \fn int fonction_rand_biome (int biome[N][N],int i,int j)
 * \param biome[NB_CASE] Tableau de taille NB_CASE d'objet de type SDL_Rect déjà initialisé
@@ -132,6 +82,21 @@ return(0);
 
 }
 
+/*
+
+création fonction ville
+
+*/
+int click_case_x(int valx){
+  int numx=valx/50;
+  return(numx);
+}
+
+int click_case_y(int valy){
+int numy=valy/35;
+  return(numy);
+}
+
 /**
 * \fn int affectation_cases(int biome[N][N],SDL_Rect cases[LONGUEUR_CASE][LARGEUR_CASE])
 * \param biome Fonction d'affectation d'un biome aléatoire
@@ -179,24 +144,12 @@ return(0);
 
 /* permet de charger le plateau*/
 
-void afficher_plateau(SDL_Window *window,SDL_Renderer * renderer,SDL_Rect cases[LONGUEUR_CASE][LARGEUR_CASE],int biome[N][N]){
+SDL_Renderer* afficher_plateau(SDL_Window *window,SDL_Renderer * renderer, SDL_Texture *texture,SDL_Rect cases[LONGUEUR_CASE][LARGEUR_CASE],int biome[N][N]){
   char * image;
-  SDL_Texture *texture=NULL;
-  SDL_Texture *texture1=NULL;
   FILE * map;
   map = fopen( "./src/map.txt", "r" );
 
   int i,j;
-
-  clean_ressources(NULL,renderer,NULL);
-
-
-  /*Création du rendu de plateau*/
-renderer=SDL_CreateRenderer(window,-1,0);
-if(renderer == NULL)
-SDL_ExitWithError("Le renderer n'a pas pu être créé");
-
-
 
   /*Création de l'image de fond*/
 SDL_Rect fond = {0, 0, Fenetre_height, Fenetre_width};
@@ -241,7 +194,6 @@ int adresse=0;
   }
 
   SDL_RenderPresent(renderer);
-
-  clean_ressources(NULL,NULL,texture);
   fclose(map);
+  return(renderer);
 }

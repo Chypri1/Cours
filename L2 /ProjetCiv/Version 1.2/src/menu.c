@@ -76,6 +76,7 @@ void menu(SDL_Window* window, SDL_Renderer* renderer) {
     SDL_AfficherUneImage(renderer,bouton_quit,texture, rectangle_quit);
 
     SDL_RenderPresent(renderer);
+    clean_ressources(NULL,NULL,texture);
 }
 
 
@@ -115,7 +116,15 @@ rectangle_continuer_barberousse.y = 50;
 rectangle_continuer_barberousse.w = 150;
 rectangle_continuer_barberousse.h = 150;
 
+SDL_Rect fenetre;
+fenetre.x = 0;
+fenetre.y = 0;
+fenetre.w = Fenetre_height;
+fenetre.h = Fenetre_width;
+
 SDL_Texture* texture = NULL;
+char *fond_fenetre = "./image/fond.jpg";
+SDL_AfficherUneImage(renderer,fond_fenetre,texture, fenetre);
 
 
 char *trajan_image = "./image/trajan.png";
@@ -162,5 +171,6 @@ while ((SDL_PollEvent(&event))||(trouve!=1)){
         }
     }
     SDL_RenderPresent(renderer);
+    clean_ressources(NULL,NULL,texture);
     return 0;
 }

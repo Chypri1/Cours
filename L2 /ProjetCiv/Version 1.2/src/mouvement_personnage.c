@@ -3,8 +3,18 @@
 #include <stdlib.h>
 #include <SDL.h>
 #include <SDL_image.h>
+
+#include "headers/admin_SDL.h"
 #include "headers/plateau.h"
-#include "headers/structure_jeu.h"
+#include "headers/civilisation.h"
+
+
+#include "headers/ville.h"`
+#include "headers/colon.h"
+#include "headers/batisseur.h"
+#include "headers/guerrier.h"
+#include "headers/arm_long.h"
+#include "headers/arm_spec.h"
 
 
 
@@ -45,20 +55,20 @@ printf("\nboucle1 \n\n");
 
                             if((numx==(guerrier->x)+1 && numy==(guerrier->y)) ){
 
-                             SDL_Surface *image=IMG_Load("./image/herbe.png");
+                             char *image="./image/herbe.png";
                              SDL_AfficherUneImage(renderer,image,texture1,cases[guerrier->x][guerrier->y-1]);
                              guerrier->x=numx;
-                             image=IMG_Load("./image/guerrier.png");
+                             image="./image/guerrier.png";
                                SDL_AfficherUneImage(renderer,image,texture1,cases[(guerrier->x)][(guerrier->y)-1]);
                              program_launched = SDL_FALSE;
                            }
                            /* reussi */
                            else if((numx==(guerrier->x) && numy==(guerrier->y)+1) ){
 
-                             SDL_Surface *image=IMG_Load("./image/herbe.png");
+                             char *image="./image/herbe.png";
                              SDL_AfficherUneImage(renderer,image,texture1,cases[guerrier->x][guerrier->y-1]);
                              guerrier->y=numy;
-                             image=IMG_Load("./image/guerrier.png");
+                             image="./image/guerrier.png";
                                SDL_AfficherUneImage(renderer,image,texture1,cases[(guerrier->x)][(guerrier->y)-1]);
                              program_launched = SDL_FALSE;
 
@@ -66,10 +76,10 @@ printf("\nboucle1 \n\n");
 
                            else if((numx==(guerrier->x)-1 && numy==(guerrier->y)) ){
 
-                             SDL_Surface *image=IMG_Load("./image/herbe.png");
+                             char *image="./image/herbe.png";
                              SDL_AfficherUneImage(renderer,image,texture1,cases[guerrier->x][guerrier->y-1]);
                              guerrier->x=numx;
-                             image=IMG_Load("./image/guerrier.png");
+                             image="./image/guerrier.png";
                                SDL_AfficherUneImage(renderer,image,texture1,cases[(guerrier->x)][(guerrier->y)-1]);
                              program_launched = SDL_FALSE;
 
@@ -77,10 +87,10 @@ printf("\nboucle1 \n\n");
 
                            else if((numx==(guerrier->x) && numy==(guerrier->y)-1) ){
 
-                             SDL_Surface *image=IMG_Load("./image/herbe.png");
+                             char *image="./image/herbe.png";
                              SDL_AfficherUneImage(renderer,image,texture1,cases[guerrier->x][guerrier->y-1]);
                              guerrier->y=numy;
-                             image=IMG_Load("./image/guerrier.png");
+                             image="./image/guerrier.png";
                              SDL_AfficherUneImage(renderer,image,texture1,cases[(guerrier->x)][(guerrier->y)-1]);
                              program_launched = SDL_FALSE;
 
@@ -132,20 +142,20 @@ printf("\nboucle1 \n\n");
 
                              if((numx==(colon->x)+1 && numy==(colon->y)) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image="./image/herbe.png";
                               SDL_AfficherUneImage(renderer,image,texture1,cases[colon->x][colon->y-1]);
                               colon->x=numx;
-                              image=IMG_Load("./image/colon.png");
+                              image="./image/colon.png";
                                 SDL_AfficherUneImage(renderer,image,texture1,cases[(colon->x)][(colon->y)-1]);
                               program_launched = SDL_FALSE;
                             }
                             /* reussi */
                             else if((numx==(colon->x) && numy==(colon->y)+1) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image="./image/herbe.png";
                               SDL_AfficherUneImage(renderer,image,texture1,cases[colon->x][colon->y-1]);
                               colon->y=numy;
-                              image=IMG_Load("./image/colon.png");
+                              image="./image/colon.png";
                                 SDL_AfficherUneImage(renderer,image,texture1,cases[(colon->x)][(colon->y)-1]);
                               program_launched = SDL_FALSE;
 
@@ -153,10 +163,10 @@ printf("\nboucle1 \n\n");
 
                             else if((numx==(colon->x)-1 && numy==(colon->y)) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image="./image/herbe.png";
                               SDL_AfficherUneImage(renderer,image,texture1,cases[colon->x][colon->y-1]);
                               colon->x=numx;
-                              image=IMG_Load("./image/colon.png");
+                              image="./image/colon.png";
                                 SDL_AfficherUneImage(renderer,image,texture1,cases[(colon->x)][(colon->y)-1]);
                               program_launched = SDL_FALSE;
 
@@ -164,10 +174,10 @@ printf("\nboucle1 \n\n");
 
                             else if((numx==(colon->x) && numy==(colon->y)-1) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image=("./image/herbe.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[colon->x][colon->y-1]);
                               colon->y=numy;
-                              image=IMG_Load("./image/colon.png");
+                              image=("./image/colon.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[(colon->x)][(colon->y)-1]);
                               program_launched = SDL_FALSE;
 
@@ -219,20 +229,20 @@ printf("\nboucle1 \n\n");
 
                              if((numx==(batisseur->x)+1 && numy==(batisseur->y)) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image=("./image/herbe.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[batisseur->x][batisseur->y-1]);
                               batisseur->x=numx;
-                              image=IMG_Load("./image/batisseur.png");
+                              image=("./image/batisseur.png");
                                 SDL_AfficherUneImage(renderer,image,texture1,cases[(batisseur->x)][(batisseur->y)-1]);
                               program_launched = SDL_FALSE;
                             }
                             /* reussi */
                             else if((numx==(batisseur->x) && numy==(batisseur->y)+1) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image=("./image/herbe.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[batisseur->x][batisseur->y-1]);
                               batisseur->y=numy;
-                              image=IMG_Load("./image/batisseur.png");
+                              image=("./image/batisseur.png");
                                 SDL_AfficherUneImage(renderer,image,texture1,cases[(batisseur->x)][(batisseur->y)-1]);
                               program_launched = SDL_FALSE;
 
@@ -240,10 +250,10 @@ printf("\nboucle1 \n\n");
 
                             else if((numx==(batisseur->x)-1 && numy==(batisseur->y)) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image=("./image/herbe.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[batisseur->x][batisseur->y-1]);
                               batisseur->x=numx;
-                              image=IMG_Load("./image/batisseur.png");
+                              image=("./image/batisseur.png");
                                 SDL_AfficherUneImage(renderer,image,texture1,cases[(batisseur->x)][(batisseur->y)-1]);
                               program_launched = SDL_FALSE;
 
@@ -251,10 +261,10 @@ printf("\nboucle1 \n\n");
 
                             else if((numx==(batisseur->x) && numy==(batisseur->y)-1) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image=("./image/herbe.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[batisseur->x][batisseur->y-1]);
                               batisseur->y=numy;
-                              image=IMG_Load("./image/batisseur.png");
+                              image=("./image/batisseur.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[(batisseur->x)][(batisseur->y)-1]);
                               program_launched = SDL_FALSE;
 
@@ -306,20 +316,20 @@ printf("\nboucle1 \n\n");
 
                              if((numx==(arm_long->x)+1 && numy==(arm_long->y)) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image=("./image/herbe.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[arm_long->x][arm_long->y-1]);
                               arm_long->x=numx;
-                              image=IMG_Load("./image/archer.png");
+                              image=("./image/archer.png");
                                 SDL_AfficherUneImage(renderer,image,texture1,cases[(arm_long->x)][(arm_long->y)-1]);
                               program_launched = SDL_FALSE;
                             }
                             /* reussi */
                             else if((numx==(arm_long->x) && numy==(arm_long->y)+1) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image=("./image/herbe.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[arm_long->x][arm_long->y-1]);
                               arm_long->y=numy;
-                              image=IMG_Load("./image/archer.png");;
+                              image=("./image/archer.png");;
                                 SDL_AfficherUneImage(renderer,image,texture1,cases[(arm_long->x)][(arm_long->y)-1]);
                               program_launched = SDL_FALSE;
 
@@ -327,10 +337,10 @@ printf("\nboucle1 \n\n");
 
                             else if((numx==(arm_long->x)-1 && numy==(arm_long->y)) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image=("./image/herbe.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[arm_long->x][arm_long->y-1]);
                               arm_long->x=numx;
-                              image=IMG_Load("./image/archer.png");
+                              image=("./image/archer.png");
                                 SDL_AfficherUneImage(renderer,image,texture1,cases[(arm_long->x)][(arm_long->y)-1]);
                               program_launched = SDL_FALSE;
 
@@ -338,10 +348,10 @@ printf("\nboucle1 \n\n");
 
                             else if((numx==(arm_long->x) && numy==(arm_long->y)-1) ){
 
-                              SDL_Surface *image=IMG_Load("./image/herbe.png");
+                              char *image=("./image/herbe.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[arm_long->x][arm_long->y-1]);
                               arm_long->y=numy;
-                              image=IMG_Load("./image/archer.png");
+                              image=("./image/archer.png");
                               SDL_AfficherUneImage(renderer,image,texture1,cases[(arm_long->x)][(arm_long->y)-1]);
                               program_launched = SDL_FALSE;
 

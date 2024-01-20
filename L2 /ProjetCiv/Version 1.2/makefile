@@ -31,7 +31,7 @@ endif
 CFLAGS += -I include -lSDL2main -lSDL2 -lSDL2_image
 
 # Listes des fichiers source et des cibles
-SRCS = src/admin_SDL.c src/main.c src/menu.c src/plateau.c src/fonction_personnage.c src/jeu.c src/bandeau_action.c src/mouvement_personnage.c
+SRCS = src/admin_SDL.c src/arm_long.c src/arm_spec.c src/main.c src/menu.c src/plateau.c src/fonction_civilisation.c src/jeu.c src/bandeau_action.c src/mouvement_personnage.c src/batisseur.c src/colon.c src/guerrier.c src/ville.c
 OBJS = $(patsubst src/%.c,obj/%.o,$(SRCS))
 TEST_SRCS = src/tests/test_click.c src/tests/test_plateau.c src/tests/test_jeu.c
 TEST_OBJS = $(patsubst src/tests/%.c,obj/%.o,$(TEST_SRCS))
@@ -44,7 +44,7 @@ all: bin/prog bin/test_click bin/test_plateau
 bin/prog: $(OBJS)
 	$(CCLNK) $(CFLAGS) $^ -o $@
 
-bin/test_click: $(OBJS) $(patsubst src/%.c,obj/%.o,$(filter-out src/plateau.c src/fonction_personnage.c src/jeu.c,$(SRCS))) obj/test_click.o
+bin/test_click: $(OBJS) $(patsubst src/%.c,obj/%.o,$(filter-out src/plateau.c src/fonction_civilisation.c src/jeu.c,$(SRCS))) obj/test_click.o
 	$(CCLNK) $(CFLAGS) $^ -o $@
 
 bin/test_plateau: $(OBJS) $(patsubst src/%.c,obj/%.o,$(filter-out src/jeu.c,$(SRCS))) obj/test_plateau.o
