@@ -1,0 +1,60 @@
+Cours Deep Learning
+
+Unsupervised Learning / apprentissage non supervisée
+
+Apprentissage avec des regroupements sans avoir d'étiquette
+
+Self-supervised / auto apprentissage
+
+Apprentissage avec une fonction qui permet d'apprendre et d'ajouter des étiquettes d'elle même `
+
+Exemple: reconnaitre des phrases de même sens et de sens contraire 
+
+
+semi-Supervised learning / apprentissage semi supervisé
+
+ 2 jeux de données, 1 supervisé (annoté), 1 non annoté
+
+Apprentissage à partir des règles de l'annoté sur le non annoté
+
+Human assisted Learning / apprentissage assisté par humain
+
+2 méthodes : 
+Apprentissage actif -> exemple compliqué qui est ressorti et qui demande l 'expertise de l'humain
+Apprentissage interactif/ passif : monitoring de l'apprentissage et si un élément n'est pas bon on dit qu'il n'est pas bon et le système apprend de la réponse humaine
+
+
+REinforcement Learning / apprentissage par renforcement 
+
+Apprentissage par séquence de bon ou mauvaise action -> système de récompense 
+Exemple: plus chaud, plus froid donc mieux ou pire
+
+
+Apprentissage machine à Deux buts
+Prédire l'avenir: 
+Extraire une information d'un doc (image, etc)
+
+Obtenir un modèle :
+- Estimer directement ou trouver par déduction (pour des problèmes simples -> un/deux paramètres)
+- apprentissage automatique( problème complexe -> 100 milliards de paramètres)
+
+Fonction de cout dit 'l' -> plus résultat est élevé, moins c'est bon
+
+Belle formule mathématiques !!!
+
+
+Risque empirique -> moyenne des fonctions de cout 
+
+
+Limite du risque empirique c'est le risque réel
+
+Le but est d'avoir peu d'erreur. 
+
+Kppv -> plus il y a de data meilleur est le modèle 
+
+Perceptron -> 
+
+
+
+
+
